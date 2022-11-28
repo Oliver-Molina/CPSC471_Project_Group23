@@ -27,14 +27,14 @@ if(isset($_SESSION['username'])){
             <?php
         }
     ?>
-    <a href= '/projects.php'>Back to Project</a><br>
+    <a href= './projects.php'>Back to Project</a><br>
     <a href="./homepage.php">homepage</a><br>
 </body>
 </html>
 <?php 
 }
 else{
-    header('Location: index.php?');
+    header('Location: ./index.php?');
     exit();
 }
 ?>

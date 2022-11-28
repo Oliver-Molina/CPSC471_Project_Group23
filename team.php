@@ -6,7 +6,7 @@ if(isset($_SESSION['username'])){
         echo $_SESSION['teamID'];
     }
     else{
-        header('Location: ./index.php?Invalid Team');
+        header('Location: ./index.php?error=Invalid Team');
         exit();
     }
     ?>
@@ -21,14 +21,14 @@ if(isset($_SESSION['username'])){
     <body>
         <h1>This is the Team Page</h1>
         <p>Here you will access info on a specific team</p>
-        <a href= '/teams.php'>Back to Teams</a><br>
+        <a href= './teams.php'>Back to Teams</a><br>
         <a href="./homepage.php">Homepage</a><br>
     </body>
     </html>
 <?php
 }
 else{
-    header('Location: index.php');
+    header('Location: ./index.php');
     exit();
 }
 ?>

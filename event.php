@@ -21,14 +21,14 @@ if(isset($_SESSION['username'])){
     <body>
         <h1>This is the Event Page</h1>
         <p>Here you will access info on a specific event</p>
-        <a href= '/events.php'>Back to Events</a><br>
+        <a href= './events.php'>Back to Events</a><br>
         <a href="./homepage.php">Homepage</a><br>
     </body>
     </html>
 <?php
 }
 else{
-    header('Location: index.php');
+    header('Location: ./index.php');
     exit();
 }
 ?>

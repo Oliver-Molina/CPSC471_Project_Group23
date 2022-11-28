@@ -6,12 +6,12 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 if(empty($username)) {
-    header("Location: index.php?errno=Username is required");
+    header("Location: index.php?error=Username is required");
     exit();
 }
 
 else if(empty($password)) {
-    header("Location: index.php?errno=Password is required");
+    header("Location: index.php?error=Password is required");
     exit();
 }
 include 'db_connection.php';
@@ -30,16 +30,16 @@ if(mysqli_num_rows($result) === 1) {
         echo "Logged In!";
         $_SESSION['username'] = $row['Client'];
         unset($_SESSION['password']);
-        header("Location: homepage.php");
+        header("Location: ./homepage.php");
         exit();
     }
     else{
-        header("Location: index.php?errno=Incorrect Username or Password");
+        header("Location: ./index.php?error=Incorrect Username or Password");
         exit();
     }
 }
 else {
-    header("Location: index.php?errno=Incorrect Username or Password");
+    header("Location: ./index.php?error=Incorrect Username or Password");
     exit();
 }
 ?>
