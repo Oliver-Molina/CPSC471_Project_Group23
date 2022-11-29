@@ -18,6 +18,5 @@
         <input type="text" id="password" name="password" placeholder="Password" autocomplete="off"><br>
         <button type='submit' value='Submit' name='Submit'>Login</button>
         </form>
-</body>
 </html>
 
