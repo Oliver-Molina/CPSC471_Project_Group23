@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-if(isset($_SESSION['username'])){
+if(isset($_SESSION['UserID'])){
     if(isset($_POST['projectID'])){
         $_SESSION['projectID'] = $_POST['projectID'];
     }

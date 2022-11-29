@@ -1,9 +1,9 @@
 <?php 
 session_start();
-if(isset($_SESSION['username'])){
-    if(isset($_POST['eventID'])){
-        $_SESSION['eventID'] = $_POST['eventID'];
-        echo $_SESSION['eventID'];
+if(isset($_SESSION['UserID'])){
+    if(isset($_POST['EventID'])){
+        $_SESSION['EventID'] = $_POST['EventID'];
+        echo $_SESSION['EventID'];
     }
     else{
         header('Location: ./index.php?Invalid Event');

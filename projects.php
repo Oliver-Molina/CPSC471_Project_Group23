@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if(isset($_SESSION['username'])){
+if(isset($_SESSION['UserID'])){
 
 ?>
 
@@ -22,13 +22,12 @@ if(isset($_SESSION['username'])){
         while($row = mysqli_fetch_assoc($result)){
             ?>
             <form action="./project.php" id='project_submission' method='post'>
-                <input type="hidden" name="projectID" value='<?php echo $row['Name']?>'/>
-                <button type="submit" name="Submit" value='Submit'><?php echo $row['Name']?></button>
+                <input type="hidden" name="projectID" value='<?php echo $row['ID']?>'/>
+                <button type="submit" name="Submit" value='Submit'><?php echo $row['PName']?></button>
             </form>
             <?php
         }
     ?>
-    <a href= './projects.php'>Back to Project</a><br>
     <a href="./homepage.php">homepage</a><br>
 </body>
 </html>

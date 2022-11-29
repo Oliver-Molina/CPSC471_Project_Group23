@@ -1,9 +1,9 @@
 <?php 
 session_start();
-if(isset($_SESSION['username'])){
-    if(isset($_POST['teamID'])){
-        $_SESSION['teamID'] = $_POST['teamID'];
-        echo $_SESSION['teamID'];
+if(isset($_SESSION['UserID'])){
+    if(isset($_POST['TeamID'])){
+        $_SESSION['TeamID'] = $_POST['TeamID'];
+        echo $_SESSION['TeamID'];
     }
     else{
         header('Location: ./index.php?error=Invalid Team');

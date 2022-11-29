@@ -12,10 +12,10 @@
         <?php if(isset($_GET['error'])) { ?>
             <p class='error'> <?php echo $_GET['error']; ?></p>
             <?php } ?>
-        <label for="username">Enter Username:</label><br>
-        <input type="text" id="username" name="username" placeholder="Username" autocomplete="off"><br>
+        <label for="UserID">Enter UserID:</label><br>
+        <input type="text" id="UserID" name="UserID" placeholder="UserID" autocomplete="off"><br>
         <label for="password">Enter Password:</label><br>
-        <input type="text" id="password" name="password" placeholder="Password" autocomplete="off"><br>
+        <input type="text" id="Password" name="Password" placeholder="Password" autocomplete="off"><br>
         <button type='submit' value='Submit' name='Submit'>Login</button>
         </form>
 </html>

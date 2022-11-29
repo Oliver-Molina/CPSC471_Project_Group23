@@ -2,11 +2,11 @@
 session_start();
 include "db_connection.php";
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+$userID = $_POST['UserID'];
+$password = $_POST['Password'];
 
-if(empty($username)) {
-    header("Location: index.php?error=Username is required");
+if(empty($userID)) {
+    header("Location: index.php?error=User ID is required");
     exit();
 }
 
@@ -15,31 +15,26 @@ else if(empty($password)) {
     exit();
 }
 include 'db_connection.php';
-$user_query = $conn->prepare("SELECT * FROM food_inventory.daily_client_needs AS user WHERE user.Client = ?");
-$user_query->bind_param("s", $username);
+$user_query = $conn->prepare("SELECT * FROM project_manager.member AS user WHERE user.ID = ?");
+$user_query->bind_param("s", $userID);
 $user_query->execute();
 $result = $user_query->get_result();
 if(mysqli_num_rows($result) === 1) {
     $row = mysqli_fetch_assoc($result);
-    #echo $row['Client'];
-    #echo $row['ClientID'];
-    #echo $username;
-    #echo $password;
 
-    if($row['Client'] == $username && $row['ClientID'] == $password) {
+    if($row['ID'] == $userID && $row['Password'] == $password) {
         echo "Logged In!";
-        $_SESSION['username'] = $row['Client'];
-        unset($_SESSION['password']);
+        $_SESSION['UserID'] = $row['ID'];
         header("Location: ./homepage.php");
         exit();
     }
     else{
-        header("Location: ./index.php?error=Incorrect Username or Password");
+        header("Location: ./index.php?error=Incorrect UserID or Password");
         exit();
     }
 }
 else {
-    header("Location: ./index.php?error=Incorrect Username or Password");
+    header("Location: ./index.php?error=Incorrect UserID or Password");
     exit();
 }
 ?>
