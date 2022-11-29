@@ -96,9 +96,9 @@ INSERT INTO `MEMBER` VALUES
 ("58606756","Robert","Drysdale","Male","robert.drysadle@gmail.com","ORG0000003");
 
 INSERT INTO `ADMIN` VALUES
-("Head","91815665"),
-("Head","94558524"),
-("Head","58606756"),
+("Org1 Head","91815665"),
+("Org2 Head","94558524"),
+("Org3 Head","58606756"),
 ("Team 1 Lead","69118391"),
 ("Team 1 Lead","32114292"),
 ("Team 1 Lead","42826789"),
