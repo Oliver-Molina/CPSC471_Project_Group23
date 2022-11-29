@@ -72,7 +72,7 @@ WHERE ID = memberID
 
 -- Remove Team
 DELETE FROM TEAM 
-WHERE ID = teamID 
+WHERE ID = TeamID 
 
 -- Remove Project
 DELETE  FROM PROJECT 
@@ -83,12 +83,12 @@ DELETE FROM PROJECT
 WHERE(
     Name = deliverableName 
     AND ProjectID = projectID
-    AND TeamID = teamID
+    AND TeamID = TeamID
 )
 
 -- Remove Event 
 DELETE FROM EVENT 
-WHERE EventID = eventID 
+WHERE EventID = EventID 
 
 -- Remove Component
 DELETE FROM COMPONENT 
@@ -107,13 +107,13 @@ WHERE ID = buildingID
 -- Remove Member from Team
 DELETE FROM BELONGS 
 WHERE (MemberID = memberID 
-    AND TeamID = teamID 
+    AND TeamID = TeamID 
 )
 
 -- Revoke Invite to Event
 DELETE FROM INVITATION 
 WHERE(MemberID = memberID
-    AND EventID = eventID 
+    AND EventID = EventID 
 )
 -- Remove Component Requirment from Deliverable
 DELETE FROM REQUIRES 
@@ -130,7 +130,7 @@ SET Name = eventName,
     StartDateTime = eventDate,
     StartTime = eventStartTime
     EndTime = eventEndTime
-WHERE EventID = eventID
+WHERE EventID = EventID
 
 -- Edit Project
 UPDATE PROJECT 
