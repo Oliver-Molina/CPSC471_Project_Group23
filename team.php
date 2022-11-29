@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if(isset($_SESSION['UserID'])){
+if(isset($_SESSION['Email'])){
     if(isset($_POST['TeamID'])){
         $_SESSION['TeamID'] = $_POST['TeamID'];
         echo $_SESSION['TeamID'];

@@ -3,18 +3,18 @@
 --Find the member whose id is a specific id
 SELECT * 
 FROM  MEMBER AS M 
-WHERE M.id = userID;
---Home Page: using userID
+WHERE M.id = Email;
+--Home Page: using Email
 --Find all organizations a member belongs to
 SELECT * 
 FROM ORGANIZATION AS O 
 WHERE EXISTS(
     SELECT * 
     FROM MEMBERSHIP AS M
-    WHERE(M.MemberID = userID
+    WHERE(M.MemberID = Email
         AND M.orgID = O.orgID)
 );
---Organization View: using userID and orgID
+--Organization View: using Email and orgID
 --Find organization info 
 SELECT O.Name, O.Desc 
 FROM ORGANIZATION AS O 
@@ -26,7 +26,7 @@ ON O.ID = M.OrgID
 WHERE EXISTS( 
 SELECT M.OrgID 
 FROM MEMBER AS M 
-WHERE M.ID = userID AND OrgID = O.ID);
+WHERE M.ID = Email AND OrgID = O.ID);
 --Events View: 
 --Find all events ran by this organization 
 SELECT E.Title 
@@ -40,7 +40,7 @@ WHERE EXISTS(
     SELECT*
     FROM INVITED as I 
     WHERE(E.Title = I.Title
-        AND userID = I.MemberID
+        AND Email = I.MemberID
         AND E.host = OrgID)
 )
 ORDER BY E.Start_Time DESC;
@@ -51,7 +51,7 @@ WHERE EXISTS(
     SELECT * 
     FROM BELONGS AS B 
     WHERE(E.host = OrgID
-        AND B.M_ID = userID
+        AND B.M_ID = Email
         AND B.TName = E.planner
     )
 )
@@ -69,7 +69,7 @@ WHERE EXISTS(
     SELECT *
     FROM INVITED AS I 
     WHERE(I.Etitle = eventTitle
-        AND I.Mname = userID
+        AND I.Mname = Email
     )
 );
 --Projects View
@@ -80,7 +80,7 @@ WHERE EXISTS(
     SELECT*
     FROM TEAM AS T
     JOIN BELONGS AS B ON(T.TName == B.Tname)
-    WHERE(B.MemberID == userID
+    WHERE(B.MemberID == Email
         AND B.ProjectID = P.ProjectID
         AND T.OrgName = OrgName)
 );
@@ -132,14 +132,14 @@ WHERE EXISTS(
     SELECT*
     FROM BELONGS AS B 
     WHERE(
-        B.MemberID = userID
+        B.MemberID = Email
         AND B.TeamID = T.TeamID
     )
 );
 --Find all teams this member manages within this organization 
 SELECT T.TName
 FROM TEAMS AS T 
-WHERE T.Lead_ID = userID;
+WHERE T.Lead_ID = Email;
 --Team View: using TeamName
 --Find team info 
 SELECT T.Name, T.Specialty

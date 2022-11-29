@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_SESSION['UserID'])){
+if(isset($_SESSION['Email'])){
     ?>
     <!DOCTYPE html>
     <html>
