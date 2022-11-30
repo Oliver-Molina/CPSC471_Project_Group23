@@ -42,77 +42,77 @@ INSERT INTO ROOM VALUES
 ("246","M",25,"BUILD015"),("AMD-167","M",25,"BUILD021"),("NOC-120","M",25,"BUILD002"),
 ("030-C","M",25,"BUILD003");
 
-INSERT INTO `MEMBER`(Fname, Lname, Gender, Email, OrgID) VALUES
-("John","Doe","Male","john.doe102@gmail.com","ORG0000002"),
-("Megan","Holmes","Female","megan.holmes@gmail.com","ORG0000002"),
-("Eleni","Nikolaou","Female","eleni.niko@gmail.com","ORG0000002"),
-("Virginia","Habig","Female","virginia.habig@hotmail.com","ORG0000002"),
-("Lee","Padgett","Male","lpadgett@hotmail.com","ORG0000002"),
-("Jean-Pierre","Desbois","Male","jpdesbois@gmail.com","ORG0000002"),
-("Eloise","English","Female","eloise.english@gmail.com","ORG0000002"),
-("Rahul","Vance","Male","rahul.vance@gmail.com","ORG0000002"),
-("Aisha","Suarez","Female","aisha.suarez@gmail.com","ORG0000002"),
-("Abdul","Ali","Male","abdul.ali@gmail.com","ORG0000002"),
-("Dwight","Medina","Male","dwight.medina@gmail.com","ORG0000002"),
-("Jo","Mirae","Female","jo.mirae@gmail.com","ORG0000002"),
-("Japser","Griffin","Female","japser.griffin@gmail.com","ORG0000002"),
-("Sapphire","Walker","Female","sapphire.walker@gmail.com","ORG0000002"),
-("Terrence","Hayes","Male","terry.hayes@gmail.com","ORG0000002"),
-("Liliana","Brown","Female","liliana.brown@gmail.com","ORG0000002"),
-("Constance","Schultz","Male","constance.schultz@gmail.com","ORG0000002"),
-("Samantha","Hutchins","Female","samhutch391@gmail.com","ORG0000001"),
-("Terry","Crews","Male","tcrew101@gmail.com","ORG0000001"),
-("Florence","Nightingale","Female","fnightingale@gmail.com","ORG0000001"),
-("Maria","Sabella","Female","msabella@gmail.com","ORG0000001"),
-("Samus","Aran","Female","samus.aran@gmail.com","ORG0000001"),
-("Lucy","Jackson","Female","lucy.jackson@gmail.com","ORG0000001"),
-("Rose","Potter","Female","rose.potter@hotmail.com","ORG0000001"),
-("Roy","Strickland","Male","roy.strickland@gmail.com","ORG0000001"),
-("Malachi","Clay","Male","malachi.clay@gmail.com","ORG0000001"),
-("Nana","Maxwell","Female","nana.maxwell@gmail.com","ORG0000001"),
-("Laurence","Banks","Male","laurence.banks@gmail.com","ORG0000001"),
-("Henry","Jones","Male","henry.jones@gmail.com","ORG0000001"),
-("Glenn","Brooks","Male","glenn.brooks@gmail.com","ORG0000001"),
-("Ivy","Thomas","Female","ivy.thomas@gmail.com","ORG0000001"),
-("Olivia","Matthews","Female","olivia.mathews@gmail.com","ORG0000001"),
-("David","Lambert","Male","lambda1040@gmail.com","ORG0000001"),
-("Matteo","Bianchi","Male","mattbianchi@gmail.com","ORG0000001"),
-("Catherine","Myres","Female","catherine.myres@gmail.com","ORG0000003"),
-("Sarah","Jackson","Female","sarah.jackson@gmail.com","ORG0000003"),
-("Evelyn","Prescott","Female","evelyn.prescott@gmai.com","ORG0000003"),
-("June","Walker","Female","junewalker2029@gmail.com","ORG0000003"),
-("Samuel","Jackson","Male","sjackson1948@gmail.com","ORG0000003"),
-("Tobias","Eaton","Male","tobias.eaton@gmail.com","ORG0000003"),
-("Maia","Rhodes","Female","maia.rhodes@gmail.com","ORG0000003"),
-("Damon","Ayala","Male","damon.ayala@gmail.com","ORG0000003"),
-("Kieran","Washington","Male","kieran.washington@gmail.com","ORG0000003"),
-("Jaya","Joyce","Female","jaya.joyce@gmail.com","ORG0000003"),
-("Nicole","Robinson","Female","nicole.robinson@gmail.com","ORG0000003"),
-("Yang","Zhu","Male","yang.zhu@gmail.com","ORG0000003"),
-("Jose","Leones","Male","jose.leones@gmail.com","ORG0000003"),
-("Jules","Vernne","Male","jules.vernne@gmail.com","ORG0000003"),
-("Pearson","Reyes","Male","pearson.reyes@gmail.com","ORG0000003"),
-("Daniel","Bianchi","Male","dannybianchi2001@gmail.com","ORG0000003"),
-("Robert","Drysdale","Male","robert.drysadle@gmail.com","ORG0000003");
-
-INSERT INTO `ADMIN` VALUES
-("Org1 Head","john.doe102@gmail.com"),
-("Org2 Head","megan.holmes@gmail.com"),
-("Org3 Head","eleni.niko@gmail.com"),
-("Team 1 Lead","virginia.habig@hotmail.com"),
-("Team 1 Lead","lpadgett@hotmail.com"),
-("Team 1 Lead","jpdesbois@gmail.com"),
-("Team 2 Lead","eloise.english@gmail.com"),
-("Team 2 Lead","rahul.vance@gmail.com"),
-("Team 2 Lead","aisha.suarez@gmail.com"),
-("Events Team Lead","abdul.ali@gmail.com"),
-("Events Team Lead","dwight.medina@gmail.com"),
-("Events Team Lead","jo.mirae@gmail.com");
-
 INSERT INTO `ORGANIZATION` VALUES
 ("ORG0000001","Organization1","Lorem ipsum dolor sit amet, consectetur adipiscing elit","090","BUILD019"),
 ("ORG0000002","Organization2","Tomato Sauce, Jar","112","BUILD013"),
 ("ORG0000003","Organization3","There are two kinds of people in the world: those who complete their sentences and-","248","BUILD014");
+
+INSERT INTO `MEMBER` VALUES
+("John","Doe","Male","john.doe102@gmail.com","ORG0000002","Password"),
+("Megan","Holmes","Female","megan.holmes@gmail.com","ORG0000002","Password"),
+("Eleni","Nikolaou","Female","eleni.niko@gmail.com","ORG0000002","Password"),
+("Virginia","Habig","Female","virginia.habig@hotmail.com","ORG0000002","Password"),
+("Lee","Padgett","Male","lpadgett@hotmail.com","ORG0000002","Password"),
+("Jean-Pierre","Desbois","Male","jpdesbois@gmail.com","ORG0000002","Password"),
+("Eloise","English","Female","eloise.english@gmail.com","ORG0000002","Password"),
+("Rahul","Vance","Male","rahul.vance@gmail.com","ORG0000002","Password"),
+("Aisha","Suarez","Female","aisha.suarez@gmail.com","ORG0000002","Password"),
+("Abdul","Ali","Male","abdul.ali@gmail.com","ORG0000002","Password"),
+("Dwight","Medina","Male","dwight.medina@gmail.com","ORG0000002","Password"),
+("Jo","Mirae","Female","jo.mirae@gmail.com","ORG0000002","Password"),
+("Japser","Griffin","Female","japser.griffin@gmail.com","ORG0000002","Password"),
+("Sapphire","Walker","Female","sapphire.walker@gmail.com","ORG0000002","Password"),
+("Terrence","Hayes","Male","terry.hayes@gmail.com","ORG0000002","Password"),
+("Liliana","Brown","Female","liliana.brown@gmail.com","ORG0000002","Password"),
+("Constance","Schultz","Male","constance.schultz@gmail.com","ORG0000002","Password"),
+("Samantha","Hutchins","Female","samhutch391@gmail.com","ORG0000001","Password"),
+("Terry","Crews","Male","tcrew101@gmail.com","ORG0000001","Password"),
+("Florence","Nightingale","Female","fnightingale@gmail.com","ORG0000001","Password"),
+("Maria","Sabella","Female","msabella@gmail.com","ORG0000001","Password"),
+("Samus","Aran","Female","samus.aran@gmail.com","ORG0000001","Password"),
+("Lucy","Jackson","Female","lucy.jackson@gmail.com","ORG0000001","Password"),
+("Rose","Potter","Female","rose.potter@hotmail.com","ORG0000001","Password"),
+("Roy","Strickland","Male","roy.strickland@gmail.com","ORG0000001","Password"),
+("Malachi","Clay","Male","malachi.clay@gmail.com","ORG0000001","Password"),
+("Nana","Maxwell","Female","nana.maxwell@gmail.com","ORG0000001","Password"),
+("Laurence","Banks","Male","laurence.banks@gmail.com","ORG0000001","Password"),
+("Henry","Jones","Male","henry.jones@gmail.com","ORG0000001","Password"),
+("Glenn","Brooks","Male","glenn.brooks@gmail.com","ORG0000001","Password"),
+("Ivy","Thomas","Female","ivy.thomas@gmail.com","ORG0000001","Password"),
+("Olivia","Matthews","Female","olivia.mathews@gmail.com","ORG0000001","Password"),
+("David","Lambert","Male","lambda1040@gmail.com","ORG0000001","Password"),
+("Matteo","Bianchi","Male","mattbianchi@gmail.com","ORG0000001","Password"),
+("Catherine","Myres","Female","catherine.myres@gmail.com","ORG0000003","Password"),
+("Sarah","Jackson","Female","sarah.jackson@gmail.com","ORG0000003","Password"),
+("Evelyn","Prescott","Female","evelyn.prescott@gmai.com","ORG0000003","Password"),
+("June","Walker","Female","junewalker2029@gmail.com","ORG0000003","Password"),
+("Samuel","Jackson","Male","sjackson1948@gmail.com","ORG0000003","Password"),
+("Tobias","Eaton","Male","tobias.eaton@gmail.com","ORG0000003","Password"),
+("Maia","Rhodes","Female","maia.rhodes@gmail.com","ORG0000003","Password"),
+("Damon","Ayala","Male","damon.ayala@gmail.com","ORG0000003","Password"),
+("Kieran","Washington","Male","kieran.washington@gmail.com","ORG0000003","Password"),
+("Jaya","Joyce","Female","jaya.joyce@gmail.com","ORG0000003","Password"),
+("Nicole","Robinson","Female","nicole.robinson@gmail.com","ORG0000003","Password"),
+("Yang","Zhu","Male","yang.zhu@gmail.com","ORG0000003","Password"),
+("Jose","Leones","Male","jose.leones@gmail.com","ORG0000003","Password"),
+("Jules","Vernne","Male","jules.vernne@gmail.com","ORG0000003","Password"),
+("Pearson","Reyes","Male","pearson.reyes@gmail.com","ORG0000003","Password"),
+("Daniel","Bianchi","Male","dannybianchi2001@gmail.com","ORG0000003","Password"),
+("Robert","Drysdale","Male","robert.drysadle@gmail.com","ORG0000003","Password");
+
+INSERT INTO `ADMIN` VALUES
+("john.doe102@gmail.com"),
+("megan.holmes@gmail.com"),
+("eleni.niko@gmail.com"),
+("virginia.habig@hotmail.com"),
+("lpadgett@hotmail.com"),
+("jpdesbois@gmail.com"),
+("eloise.english@gmail.com"),
+("rahul.vance@gmail.com"),
+("aisha.suarez@gmail.com"),
+("abdul.ali@gmail.com"),
+("dwight.medina@gmail.com"),
+("jo.mirae@gmail.com");
 
 INSERT INTO PROJECT VALUES
 ("PROJECT1","Project1","2022-08-15","2023-08-15","ORG0000001"),
@@ -120,15 +120,15 @@ INSERT INTO PROJECT VALUES
 ("PROJECT3","Project3","2022-07-01","2023-07-01","ORG0000003");
 
 INSERT INTO TEAM VALUES
-("ORG1TEA1","Team 1",NULL,"Specialization1","virginia.habig@hotmail.com","ORG0000001","PROJECT1"),
-("ORG2TEA1","Team 1",NULL,"Specialization1","lpadgett@hotmail.com","ORG0000002","PROJECT2"),
-("ORG3TEA1","Team 1",NULL,"Specialization1","jpdesbois@gmail.com","ORG0000003","PROJECT3"),
-("ORG1TEA2","Team 2",NULL,"Specialization2","eloise.english@gmail.com","ORG0000001","PROJECT1"),
-("ORG2TEA2","Team 2",NULL,"Specialization2","rahul.vance@gmail.com","ORG0000002","PROJECT2"),
-("ORG3TEA2","Team 2",NULL,"Specialization2","aisha.suarez@gmail.com","ORG0000003","PROJECT3"),
-("ORG1EVEN","Events",NULL,"Specialization3","abdul.ali@gmail.com","ORG0000001",NULL),
-("ORG2EVEN","Events",NULL,"Specialization3","dwight.medina@gmail.com","ORG0000003",NULL),
-("ORG3EVEN","Events",NULL,"Specialization3","jo.mirae@gmail.com","ORG0000002",NULL);
+("ORG1TEA1","Team 1","Specialization1","virginia.habig@hotmail.com","ORG0000001","PROJECT1"),
+("ORG2TEA1","Team 1","Specialization1","lpadgett@hotmail.com","ORG0000002","PROJECT2"),
+("ORG3TEA1","Team 1","Specialization1","jpdesbois@gmail.com","ORG0000003","PROJECT3"),
+("ORG1TEA2","Team 2","Specialization2","eloise.english@gmail.com","ORG0000001","PROJECT1"),
+("ORG2TEA2","Team 2","Specialization2","rahul.vance@gmail.com","ORG0000002","PROJECT2"),
+("ORG3TEA2","Team 2","Specialization2","aisha.suarez@gmail.com","ORG0000003","PROJECT3"),
+("ORG1EVEN","Events","Specialization3","abdul.ali@gmail.com","ORG0000001",NULL),
+("ORG2EVEN","Events","Specialization3","dwight.medina@gmail.com","ORG0000003",NULL),
+("ORG3EVEN","Events","Specialization3","jo.mirae@gmail.com","ORG0000002",NULL);
 
 insert into `EVENT` values
 ("EVENT003","Event3",80,"Teams will showcase their projects that they have been working on to all attendees","2023-04-22  8:00:00","2023-09-22  22:00:00","ORG0000002","ORG2EVEN"),
@@ -154,25 +154,78 @@ insert into USES values
 ("EED-123","BUILD002","2022-11-30  20:00:00","2022-11-30  22:00:00","EVENT005"),
 ("025","BUILD009","2023-01-11  12:30:00","2023-01-11  13:30:00","EVENT008");
 
-insert into BELONGS values
-("42145777","ORG2TEA1"),("28687180","ORG2TEA1"),("43414582","ORG2TEA1"),("32114292","ORG2TEA1"),
-("90250420","ORG2TEA1"),("71610654","ORG2TEA1"),("12427540","ORG2TEA1"),("30779845","ORG2TEA1"),
-("66357212","ORG2TEA2"),("44937185","ORG2TEA2"),("66839421","ORG2TEA2"),("94558524","ORG2TEA2"),
-("90250420","ORG2TEA2"),("71610654","ORG2TEA2"),("30779845","ORG2TEA2"),("96152855","ORG2TEA2"),
-("79751347","ORG3EVEN"),("78177734","ORG3EVEN"),("21734521","ORG3EVEN"),("96406803","ORG3EVEN"),
-("90250420","ORG3EVEN"),("71610654","ORG3EVEN"),("12427540","ORG3EVEN"),("96152855","ORG3EVEN"),
-("73997687","ORG1TEA1"),("47902909","ORG1TEA1"),("76679032","ORG1TEA1"),("69118391","ORG1TEA1"),
-("12784897","ORG1TEA1"),("89405093","ORG1TEA1"),("51146876","ORG1TEA1"),("28526851","ORG1TEA1"),
-("91451497","ORG1TEA2"),("50210024","ORG1TEA2"),("49123455","ORG1TEA2"),("91815665","ORG1TEA2"),
-("12784897","ORG1TEA2"),("89405093","ORG1TEA2"),("28526851","ORG1TEA2"),("73164769","ORG1TEA2"),
-("92028456","ORG1EVEN"),("14296409","ORG1EVEN"),("37771952","ORG1EVEN"),("98509061","ORG1EVEN"),
-("12784897","ORG1EVEN"),("89405093","ORG1EVEN"),("51146876","ORG1EVEN"),("73164769","ORG1EVEN"),
-("84415100","ORG3TEA1"),("58147624","ORG3TEA1"),("96718013","ORG3TEA1"),("42826789","ORG3TEA1"),
-("54137946","ORG3TEA1"),("62359123","ORG3TEA1"),("71917500","ORG3TEA1"),("72065666","ORG3TEA1"),
-("36313608","ORG3TEA2"),("14144507","ORG3TEA2"),("89212423","ORG3TEA2"),("52676143","ORG3TEA2"),
-("54137946","ORG3TEA2"),("62359123","ORG3TEA2"),("72065666","ORG3TEA2"),("72794580","ORG3TEA2"),
-("95112480","ORG2EVEN"),("21174274","ORG2EVEN"),("45182042","ORG2EVEN"),("58606756","ORG2EVEN"),
-("54137946","ORG2EVEN"),("62359123","ORG2EVEN"),("71917500","ORG2EVEN"),("72794580","ORG2EVEN");
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('mattbianchi@gmail.com','ORG1EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('henry.jones@gmail.com','ORG1EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('nana.maxwell@gmail.com','ORG1EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('ivy.thomas@gmail.com','ORG1EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('malachi.clay@gmail.com','ORG1EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('rose.potter@hotmail.com','ORG1EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('roy.strickland@gmail.com','ORG1EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('laurence.banks@gmail.com','ORG1EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('glenn.brooks@gmail.com','ORG1TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('laurence.banks@gmail.com','ORG1TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('fnightingale@gmail.com','ORG1TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('samhutch391@gmail.com','ORG1TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('nana.maxwell@gmail.com','ORG1TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('tcrew101@gmail.com','ORG1TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('henry.jones@gmail.com','ORG1TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('olivia.mathews@gmail.com','ORG1TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('lambda1040@gmail.com','ORG1TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('glenn.brooks@gmail.com','ORG1TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('msabella@gmail.com','ORG1TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('laurence.banks@gmail.com','ORG1TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('nana.maxwell@gmail.com','ORG1TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('ivy.thomas@gmail.com','ORG1TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('lucy.jackson@gmail.com','ORG1TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('samus.aran@gmail.com','ORG1TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('damon.ayala@gmail.com','ORG2EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('jules.vernne@gmail.com','ORG2EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('kieran.washington@gmail.com','ORG2EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('maia.rhodes@gmail.com','ORG2EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('yang.zhu@gmail.com','ORG2EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('jaya.joyce@gmail.com','ORG2EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('nicole.robinson@gmail.com','ORG2EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('robert.drysadle@gmail.com','ORG2EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('jo.mirae@gmail.com','ORG2TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('megan.holmes@gmail.com','ORG2TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('dwight.medina@gmail.com','ORG2TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('abdul.ali@gmail.com','ORG2TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('japser.griffin@gmail.com','ORG2TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('terry.hayes@gmail.com','ORG2TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('john.doe102@gmail.com','ORG2TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('eleni.niko@gmail.com','ORG2TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('virginia.habig@hotmail.com','ORG2TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('sapphire.walker@gmail.com','ORG2TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('liliana.brown@gmail.com','ORG2TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('jpdesbois@gmail.com','ORG2TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('abdul.ali@gmail.com','ORG2TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('dwight.medina@gmail.com','ORG2TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('japser.griffin@gmail.com','ORG2TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('lpadgett@hotmail.com','ORG2TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('rahul.vance@gmail.com','ORG3EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('eloise.english@gmail.com','ORG3EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('dwight.medina@gmail.com','ORG3EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('abdul.ali@gmail.com','ORG3EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('aisha.suarez@gmail.com','ORG3EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('jo.mirae@gmail.com','ORG3EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('sapphire.walker@gmail.com','ORG3EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('constance.schultz@gmail.com','ORG3EVEN');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('pearson.reyes@gmail.com','ORG3TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('catherine.myres@gmail.com','ORG3TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('jose.leones@gmail.com','ORG3TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('yang.zhu@gmail.com','ORG3TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('jaya.joyce@gmail.com','ORG3TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('sarah.jackson@gmail.com','ORG3TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('nicole.robinson@gmail.com','ORG3TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('evelyn.prescott@gmai.com','ORG3TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('jose.leones@gmail.com','ORG3TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('junewalker2029@gmail.com','ORG3TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('jules.vernne@gmail.com','ORG3TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('tobias.eaton@gmail.com','ORG3TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('dannybianchi2001@gmail.com','ORG3TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('sjackson1948@gmail.com','ORG3TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('nicole.robinson@gmail.com','ORG3TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('jaya.joyce@gmail.com','ORG3TEA2');
 
 insert into `COMPONENT` values
 ("COMPONENT0000002","Component02","Type2",3,"ORG0000002"),
