@@ -235,7 +235,7 @@ INSERT INTO `MEMBER` VALUES
 ("Abdul","Ali","Male","abdul.ali@gmail.com","ORG0000002","Password"),
 ("Dwight","Medina","Male","dwight.medina@gmail.com","ORG0000002","Password"),
 ("Jo","Mirae","Female","jo.mirae@gmail.com","ORG0000002","Password"),
-("Japser","Griffin","Female","japser.griffin@gmail.com","ORG0000002","Password"),
+("Jasper","Griffin","Female","jasper.griffin@gmail.com","ORG0000002","Password"),
 ("Sapphire","Walker","Female","sapphire.walker@gmail.com","ORG0000002","Password"),
 ("Terrence","Hayes","Male","terry.hayes@gmail.com","ORG0000002","Password"),
 ("Liliana","Brown","Female","liliana.brown@gmail.com","ORG0000002","Password"),
@@ -365,7 +365,7 @@ INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('jo.mirae@gmail.com','ORG2TEA1'
 INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('megan.holmes@gmail.com','ORG2TEA1');
 INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('dwight.medina@gmail.com','ORG2TEA1');
 INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('abdul.ali@gmail.com','ORG2TEA1');
-INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('japser.griffin@gmail.com','ORG2TEA1');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('jasper.griffin@gmail.com','ORG2TEA1');
 INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('terry.hayes@gmail.com','ORG2TEA1');
 INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('john.doe102@gmail.com','ORG2TEA1');
 INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('eleni.niko@gmail.com','ORG2TEA1');
@@ -375,7 +375,7 @@ INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('liliana.brown@gmail.com','ORG2
 INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('jpdesbois@gmail.com','ORG2TEA2');
 INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('abdul.ali@gmail.com','ORG2TEA2');
 INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('dwight.medina@gmail.com','ORG2TEA2');
-INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('japser.griffin@gmail.com','ORG2TEA2');
+INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('jasper.griffin@gmail.com','ORG2TEA2');
 INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('lpadgett@hotmail.com','ORG2TEA2');
 INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('rahul.vance@gmail.com','ORG3EVEN');
 INSERT INTO BELONGS (`MEmail`,`Team_ID`) VALUES ('eloise.english@gmail.com','ORG3EVEN');
