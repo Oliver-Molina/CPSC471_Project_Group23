@@ -313,7 +313,7 @@ INSERT INTO TEAM VALUES
 ("ORG3TEA2","Team 2","Specialization2","tobias.eaton@gmail.com","ORG0000003","PROJECT3"),
 ("ORG3EVEN","Events","Events","danny.bianchi@gmail.com","ORG0000003",NULL);
 
-insert into `EVENT` values
+insert into `EVENT_` values
 ("EVENT003","Event3",80,"Teams will showcase their projects that they have been working on to all attendees","2023-04-22  8:00:00","2023-09-22  22:00:00","ORG0000002","ORG2EVEN"),
 ("EVENT006","Event6",90,"Trivia Night: Attendees can choose to join a group or just be a part of the audience. There will be special prizes for the top 2 winners.","2022-12-04  11:45:00","2023-12-04  13:15:00","ORG0000002","ORG2EVEN"),
 ("EVENT009","Event9",500,"Networking experience with companies like Infosys, RBC Innovation Hub, Avidbots Corp., Amazon Web Services for students looking for internships for the year 2023-2024.","2023-02-02  16:15:00","2023-02-03  16:15:00","ORG0000002","ORG2EVEN"),
@@ -325,17 +325,17 @@ insert into `EVENT` values
 ("EVENT005","Event5",65,"Clubs Week: Interested applicants can come to this event to get to know about the club and what it has to offer.","2022-11-30  20:00:00","2022-11-30  22:00:00","ORG0000003","ORG3EVEN"),
 ("EVENT008","Event8",55,"Bake Sale: Members of the clubs will bring self-baked goods for this fundraiser event.","2023-01-11  12:30:00","2023-01-11  13:30:00","ORG0000003","ORG3EVEN");
 
-insert into USES values
-("AMD-167","BUILD021","2023-04-22  8:00:00","2023-09-22  22:00:00","EVENT003"),
-("190-A","BUILD003","2022-12-04  11:45:00","2023-12-04  13:15:00","EVENT006"),
-("161-A","BUILD002","2023-02-02  16:15:00","2023-02-03  16:15:00","EVENT009"),
-("ENB-123","BUILD005","2023-03-14  14:45:00","2023-03-15  14:45:00","EVENT001"),
-("ENB-123","BUILD005","2023-04-23  17:30:00","2023-04-24  17:30:00","EVENT004"),
-("112","BUILD013","2023-04-19  15:30:00","2023-04-19  16:30:00","EVENT007"),
-("ENE-201","BUILD021","2023-03-15  12:00:00","2023-03-15  13:00:00","EVENT010"),
-("248","BUILD014","2023-05-21  20:00:00","2023-07-21  21:00:00","EVENT002"),
-("EED-123","BUILD002","2022-11-30  20:00:00","2022-11-30  22:00:00","EVENT005"),
-("025","BUILD009","2023-01-11  12:30:00","2023-01-11  13:30:00","EVENT008");
+insert into EVENT_USES values
+("AMD-167","BUILD021", "EVENT003"),
+("190-A","BUILD003", "EVENT006"),
+("161-A","BUILD002", "EVENT009"),
+("ENB-123","BUILD005", "EVENT001"),
+("ENB-123","BUILD005", "EVENT004"),
+("112","BUILD013", "EVENT007"),
+("ENE-201","BUILD021", "EVENT010"),
+("248","BUILD014", "EVENT002"),
+("EED-123","BUILD002", "EVENT005"),
+("025","BUILD009", "EVENT008");
 
 INSERT INTO BELONGS VALUES
 ("samantha.hutchins@gmail.com","ORG1TEA1"),

@@ -14,6 +14,11 @@ WHERE EXISTS(
     WHERE(M.MemberID = Email
         AND M.orgID = O.orgID)
 );
+--Find if the user is an admin
+SELECT*
+FROM ADMIN AS a
+WHERE a.Email = ?
+
 --Organization View: using Email and orgID
 --Find organization info 
 SELECT O.Name, O.Desc 
@@ -74,20 +79,16 @@ WHERE EXISTS(
 );
 --Projects View
 --Find all projects that this member works on
-SELECT P.Project_ID
+SELECT *
 FROM PROJECT AS P 
 WHERE EXISTS(
     SELECT*
     FROM TEAM AS T
-    JOIN BELONGS AS B ON(T.TName == B.Tname)
-    WHERE(B.MemberID == Email
-        AND B.ProjectID = P.ProjectID
-        AND T.OrgName = OrgName)
+    JOIN BELONGS AS B ON(T.ID = B.Team_ID)
+    WHERE(B.MEmail = ?
+        AND T.ProjectID = P.ID)
 );
---Find all projects created by this organization 
-SELECT P.Proejct_ID 
-FROM PROJECT AS P 
-WHERE P.orgID = orgID ;
+
 --Project View: using projectID
 --Find project info 
 SELECT P.Name,P.Desc
