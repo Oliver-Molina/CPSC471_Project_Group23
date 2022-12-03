@@ -14,7 +14,11 @@ if(isset($_SESSION['Email'])){
         <p>Here you will access your Events</p>
         <?php
         include 'db_connection.php';
-        $user_query = $conn->prepare('SELECT * FROM available_food');
+        $str = "SELECT  event_.EventID, event_.EventName FROM  event_ JOIN  
+         organization on organization.ID =  event_.HostID
+        JOIN  member AS user ON user.OrgID =  organization.ID WHERE user.Email = ?";
+        $user_query = $conn->prepare($str);
+        $user_query->bind_param("s", $_SESSION['Email']);
         $user_query->execute();
         $result = $user_query->get_result();
         while($row = mysqli_fetch_assoc($result)){
