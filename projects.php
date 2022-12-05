@@ -18,6 +18,17 @@ if(isset($_SESSION['Email'])){
     <p>Here you will access your projects</p>
     <?php
         include 'db_connection.php';
+
+        $isAdmin_Query->execute();
+        if($row = mysqli_fetch_assoc($isAdmin_Query->get_result())){
+            ?>
+            <p><strong>Create a new project</strong></p>
+            <form action="./new_project.php" id='project_creation' method='post'>
+                <button type="submit" name="Submit" value='Submit'>Create a new Project</button>
+            </form>
+            <?php
+        }
+        ?><p><strong>My Projects</strong></p><?php
         $query = 'SELECT PROJECT.ID, PROJECT.PName FROM PROJECT JOIN TEAM ON Project.ID = TEAM.ProjectID
         JOIN BELONGS ON Team.ID = BELONGS.Team_ID 
         WHERE BELONGS.MEmail = ?';
