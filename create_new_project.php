@@ -3,16 +3,16 @@ session_start();
 if(isset($_SESSION['Email'])){
     include 'db_connection.php';
     $isAdmin_Query->execute();
-    if ($row = mysqli_fetch_assoc($isAdmin_Query->get_result())) {
+    $PName = $_POST['PName'];
+    $EndDate = $_POST['EndDate'];
+    if(empty($PName) || empty($EndDate)){
+        header("Location: ./projects.php?error=Yikes");
     }
-    else{
-        session_unset();
-        header('Location: ./index.php?error=You are not supposed to be there');
-    }
+    //do sql shit here
 }
 else{
     session_unset();
-    header('Location: ./index.php?');
+    header('Location: ./index.php');
     exit();
 }
 ?>
