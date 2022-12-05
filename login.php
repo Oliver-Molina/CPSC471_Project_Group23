@@ -18,7 +18,7 @@ $user_query = $conn->prepare("SELECT * FROM project_manager.member AS user WHERE
 $user_query->bind_param("s", $Email);
 $user_query->execute();
 $result = $user_query->get_result();
-if(mysqli_num_rows($result) === 1) {
+if(mysqli_num_rows($result) == 1) {
     $row = mysqli_fetch_assoc($result);
     echo $row['Email'];
     echo $row['Password'];
