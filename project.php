@@ -14,8 +14,6 @@ if(isset($_SESSION['Email'])){
             background:floralwhite;
             padding-top:75px;
             padding-bottom:200px;
-        
-           
         }
         .myTable{
             text-align:center;
@@ -59,42 +57,42 @@ if(isset($_SESSION['Email'])){
     <!DOCTYPE html>
     <html>
     <head>
-    <title>Project</title>
+        <title>Project</title>
     </head>
     <div class ="container">
-    <div class="title_block">
-    <body>
-        <h1>This is the Project Page</h1>
-        <p>Here you will access info on a specific project</p>
-        
-    </body>
-   
- 
+        <div class="title_block">
+            <body>
+                <h1>This is the Project Page</h1>
+                <p>Here you will access info on a specific project</p>
+            </body>
     </html>
-<div class="myTable">
-<?php
-    include 'db_connection.php';
-    $query = 'SELECT DName, StartDate, EndDate FROM DELIVERABLE WHERE ProjectID = ?';
-    $user_query = $conn->prepare($query);
-    $user_query->bind_param('s',$_POST['projectID']);
-    $user_query->execute();
-    $results = $user_query->get_result();
-    ?>
+    <div class="myTable">
+        <?php
+        include 'db_connection.php';
+        $query = 'SELECT DName, StartDate, EndDate FROM DELIVERABLE WHERE ProjectID = ?';
+        $user_query = $conn->prepare($query);
+        $user_query->bind_param('s',$_POST['projectID']);
+        $user_query->execute();
+        $results = $user_query->get_result();
+        ?>
     <html>
-	<table class='center'> 
-	<tr> 
-	<th>Deliverable</th>
-	<th>Start Date</th>
-	<th>Deadline</th>
-	</tr>
-    </html><?php
+        <table class='center'> 
+            <tr> 
+                <th>Deliverable</th>
+                <th>Start Date</th>
+                <th>Deadline</th>
+            </tr>
+    </html>
+    <?php
     while($row = mysqli_fetch_assoc($results)){?>
         <html>
-        <div class='trow'><tr>
-        <td><?php echo $row['DName'];?>
-        <td><?php echo $row['StartDate'];?>
-        <td><?php echo $row['EndDate'];?>
-        </tr></div>
+            <div class='trow'>
+                <tr>
+                    <td><?php echo $row['DName'];?>
+                    <td><?php echo $row['StartDate'];?>
+                    <td><?php echo $row['EndDate'];?>
+                </tr>
+            </div>
         </html>
         <?php
     }?>

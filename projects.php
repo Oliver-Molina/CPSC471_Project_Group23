@@ -8,6 +8,11 @@ if(isset($_SESSION['Email'])){
 <head>
 <title>Projects</title>
 </head>
+<style>
+    .button{
+        width:30px;
+    }
+</style>
 <body>
     <h1>This is the Projects Page</h1>
     <p>Here you will access your projects</p>
