@@ -1,57 +1,41 @@
 <?php 
 session_start();
 if(isset($_SESSION['Email'])){
-include 'db_connection.php';
-// Get user's projects
-$projects_query = $conn->prepare(
-    'SELECT P.ID, P.PName
-    FROM PROJECT AS P 
-    WHERE EXISTS(
-        SELECT*
-        FROM TEAM AS T
-        JOIN BELONGS AS B ON(T.ID = B.Team_ID)
-        WHERE(B.MEmail = ?
-            AND T.ProjectID = P.ID)
-    )');
-$projects_query->bind_param("s", $_SESSION['Email']);
+
 ?>
-
-
 <!DOCTYPE html>
 <html>
-
 <head>
 <title>Projects</title>
 </head>
-
 <body>
-    <h1>Projects Page</h1>
+    <h1>This is the Projects Page</h1>
+    <p>Here you will access your projects</p>
     <?php
-        $isAdmin_Query->execute();
-        if($row = mysqli_fetch_assoc($isAdmin_Query->get_result())){
+        include 'db_connection.php';
+        $query = 'SELECT PROJECT.ID, PROJECT.PName FROM PROJECT JOIN TEAM ON Project.ID = TEAM.ProjectID
+        JOIN BELONGS ON Team.ID = BELONGS.Team_ID 
+        WHERE BELONGS.MEmail = ?';
+        $user_query = $conn->prepare($query);
+        $user_query->bind_param('s',$_SESSION['Email']);
+        $user_query->execute();
+        $result = $user_query->get_result();
+        if(mysqli_num_rows($result) == 0){
             ?>
-            <p><strong>Create a new project</strong></p>
-            <form action="./new_project.php" id='project_creation' method='post'>
-                <button type="submit" name="Submit" value='Submit'>Create a new Project</button>
+            <html>
+                <p style="font-family:helvetica;text-align:center">You currently have no projects</p>
+            </html>
+        <?php
+        }
+        while($row = mysqli_fetch_assoc($result)){
+            ?>
+            <form action="./project.php" id='project_submission' method='post'>
+                <input type="hidden" name="projectID" value='<?php echo $row['ID']?>'/>
+                <button type="submit" name="Submit" value='Submit'><?php echo $row['PName']?></button>
             </form>
             <?php
         }
-        ?><p><strong>My Projects</strong></p><?php
-        $projects_query->execute();
-        $result = $projects_query->get_result();
-        while($row = mysqli_fetch_assoc($result)){
-            ?>
-            <div>
-                <form action="./project.php" id='project_submission' method='post'>
-                    <input type="hidden" name="projectID" value='<?php echo $row['ID']?>'/>
-                    <button type="submit" name="Submit" value='Submit'><?php echo $row['PName']?></button>
-                </form>
-            </div>
-            
-            <?php
-        }
     ?>
-    </br>
     <a href="./homepage.php">homepage</a><br>
 </body>
 </html>

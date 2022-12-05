@@ -17,7 +17,6 @@ if(isset($_SESSION['Email'])){
     <head>
     <title>Team</title>
     </head>
-
     <body>
         <h1>This is the Team Page</h1>
         <p>Here you will access info on a specific team</p>
@@ -26,6 +25,7 @@ if(isset($_SESSION['Email'])){
     </body>
     </html>
 <?php
+$query = 'SELECT Fname, Lname, Email, Gender FROM Member AS M where M.OrgID = '
 }
 else{
     header('Location: ./index.php');
