@@ -28,7 +28,6 @@ if(isset($_SESSION['Email'])){
     $query = 'SELECT Fname, Lname, Email, Gender FROM Member AS M where M.OrgID = ';
 }
 else{
-    session_unset();
     header('Location: ./index.php');
     exit();
 }

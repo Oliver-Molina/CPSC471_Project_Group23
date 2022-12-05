@@ -116,7 +116,6 @@ if(isset($_SESSION['Email'])){
 
 
 }else{
-    session_unset();
     header('Location: ./index.php');
     exit();
 }

@@ -96,7 +96,6 @@ while($row = mysqli_fetch_assoc($results)){
 </html>
 <?php
 }else{
-	session_unset();
     header('Location: ./index.php');
     exit();
 }
