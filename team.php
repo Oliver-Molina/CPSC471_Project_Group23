@@ -10,10 +10,8 @@ if(isset($_SESSION['Email'])){
         exit();
     }
     ?>
-
     <!DOCTYPE html>
     <html>
-
     <head>
     <title>Team</title>
     </head>
@@ -25,7 +23,7 @@ if(isset($_SESSION['Email'])){
     </body>
     </html>
 <?php
-    $query = 'SELECT Fname, Lname, Email, Gender FROM Member AS M where M.OrgID = ';
+    $query = 'SELECT Fname, Lname, Email, Gender FROM M';
 }
 else{
     session_unset();
