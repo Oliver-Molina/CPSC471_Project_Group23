@@ -30,5 +30,6 @@
         </form> 
         </div>
      </body>
+     <a href ='./registration.php'>Register here</a>
 </html>
 
