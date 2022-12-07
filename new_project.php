@@ -19,9 +19,11 @@ if(isset($_SESSION['Email'])){
             <h1>Create a new Project</h1>
             <form action = './create_new_project.php' method='post'>
                 <label for="PName">Enter Project Name:</label><br>
-                <input type='text' id='PName' name='PName' placeholder="Project Name" autocomplete="off"><br>
+                <input required type='text' id='PName' name='PName' placeholder="Project Name" autocomplete="off"><br>
+                <label for="StartDate">Enter Project Start Date:</label><br>
+                <input required type="date" id='StartDate' name="StartDate" placeholder=<?php echo date('Y/m/d')?> autocomplete="off"><br>
                 <label for="EndDate">Enter Project End Date:</label><br>
-                <input type="date" id='EndDate' name="EndDate" placeholder=<?php echo date('Y/m/d')?> autocomplete="off"><br>
+                <input required type="date" id='EndDate' name="EndDate" placeholder=<?php echo date('Y/m/d')?> autocomplete="off"><br>
                 <button type='submit' value='Submit' name="Submit">Submit</button><br>
             </form>
             <a href="./homepage.php">homepage</a><br>
