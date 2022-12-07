@@ -91,7 +91,13 @@ while($row = mysqli_fetch_assoc($results)){
 <html>
 </table>
 <div class ='links'>
-<a href="./homepage.php">Back to hompage</a><br>
+		<form action="./add_item_page.php" id='add_item_form' method='post'>
+			<button type='submit' name="Submit" value="Submit">Add Items</button>
+		</form><br>
+
+		<a href="./homepage.php">Back to hompage</a><br>
+
+</form>
 </div>
 </html>
 <?php
