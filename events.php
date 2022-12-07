@@ -1,6 +1,9 @@
 <?php 
 session_start();
 if(isset($_SESSION['Email'])){
+    if(isset($_SESSION['EventID'])){
+        unset($_SESSION['EventID']);
+    }
 ?>
     <!DOCTYPE html>
     <style>
@@ -77,8 +80,11 @@ if(isset($_SESSION['Email'])){
             </body>
             <?php } ?>
             </tr><?php
-            } ?></table> <?php
+            } ?></table> 
+            <a href='./create_event.php'>Create an Event</a>
+            <?php
         }
+        
 }else{
     session_unset();
     header("Location: ./index.php");

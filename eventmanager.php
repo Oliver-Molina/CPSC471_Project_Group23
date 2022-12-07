@@ -49,7 +49,7 @@ if(isset($_SESSION['Email'])){
     $insert_not_exists = $conn->prepare('INSERT IGNORE INTO EVENT_USES(BuildingID, EventID) VALUES(?,?)');
     $insert_not_exists->bind_param('ii',$_POST['BuildID'],$_POST['EventID']);
     $insert_not_exists->execute();
-    $start= $_POST['start'];                  
+    $start= $_POST['start'];             
     $end = $_POST['end'];
     $name = $_POST['ename'];
     $attendees = $_POST['attendees'];
