@@ -30,25 +30,23 @@ if(isset($_SESSION['Email'])){
 				
             </form>
 			<?php
+		
 if(isset($_POST['Submit'])){
 	if(!empty($_POST['TName_User']) && !empty($_POST['Specialization_User'])){
+		
+		$sql = 'INSERT INTO TEAM (ID, TName, Specialization, LeadEmail, OrgID) VALUES (?,?,?,?,?)';
 		
 		$teamName = $_POST['TName_User'];
 		$specialization = $_POST['Specialization_User'];
 		$email = $_SESSION['Email'];
 		$orgID = $_SESSION['OrgID'];
-		$projID = $_SESSION['ProjectID'];
+		$id = '0';
 		
-		$query = "INSERT INTO TEAM((TName, Specialization, LeadEmail, OrgID, ProjectID) values ('$teamName', '$specialization', '$email', '$orgID', 'projID'))";
-		
-		$run = mysqli_query($conn, $query) or die(mysqli_error());
-		
-		if($run){
-			echo " Fom submitted successfully";
-		}
-		else{
-			echo " Form not submitted";
-		}
+		$query = $conn->prepare($sql);
+        $query->bind_param('issss', $id, $teamName, $specialization, $email, $orgID);
+        $query->execute();
+		$result = $query->get_result();
+    
 	}
 }			
 			?>
