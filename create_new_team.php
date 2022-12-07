@@ -51,7 +51,8 @@ if(isset($_POST['Submit'])){
 }			
 			?>
 
-            <a href="./homepage.php"> Homepage </a>
+            <a href="./homepage.php"> Homepage </a> <br>
+			<a href="./teams.php"> Back to teams </a>
         </body>
         </html>
         <?php
