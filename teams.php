@@ -1,5 +1,7 @@
 <?php 
 session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 if(isset($_SESSION['Email'])){
     ?>
 
@@ -16,7 +18,7 @@ if(isset($_SESSION['Email'])){
         <?php
         include 'db_connection.php';
         $user_query = $conn->prepare('SELECT * FROM TEAM WHERE TEAM.OrgID = ?');
-        $user_query = $conn->bind_param('s',$_SESSION['OrgID']);
+        $user_query->bind_param('s',$_SESSION['OrgID']);
         $user_query->execute();
         $result = $user_query->get_result();
         while($row = mysqli_fetch_assoc($result)){

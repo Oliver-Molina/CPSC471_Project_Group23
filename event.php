@@ -16,12 +16,13 @@ if(isset($_SESSION['Email'])){
             text-align:center;
         }
         .container{
+            overflow:scroll;
             font-family:helvetica;
-            position:fixed;
-            top:25%;
+            position:absolute;
             left:10%;
             right:10%;
             border:3px solid black;
+            border-radius:30px;
             background: azure;
         }
         .address_block{
@@ -61,9 +62,9 @@ if(isset($_SESSION['Email'])){
     <title>Event</title>
     </head>
     <body>
-        <h1>This is the Event Page</h1>
-        <h3>Your Event's ID is: <?php  echo $_POST['EventID'];?></h3>
+        <h1>Event <?php  echo $_POST['EventID'];?></h3>
         <p>Here you will access info on a specific event</p>
+        
         <a href= './events.php'>Back to Events</a><br>
         <a href="./homepage.php">Homepage</a><br>
     </body>
@@ -76,7 +77,7 @@ if(isset($_SESSION['Email'])){
     JOIN BUILDING ON ROOM.BuildingID = BUILDING.ID
     WHERE EVENT_.EventID = ?';
     $query = $conn -> prepare($sql);
-    $query->bind_param('i',$_SESSION);
+    $query->bind_param('i',$_POST['EventID']);
     $query->execute();
     $result=$query->get_result();
     $row=mysqli_fetch_assoc($result);
