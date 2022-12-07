@@ -108,7 +108,8 @@ if(isset($_SESSION['Email'])){
     $isAdmin_Query->execute();
     if ($row = mysqli_fetch_assoc($isAdmin_Query->get_result())) {
         ?>
-        <form action="./edit_project_page.php" id='edit_project' method='post'>            <button type="submit" name="Submit" value='Submit'>Edit this project</button>
+        <form action="./edit_project_page.php" id='edit_project' method='post'>            
+            <button type="submit" name="Submit" value='Submit'>Edit this project</button>
         </form>
         <?php
     }

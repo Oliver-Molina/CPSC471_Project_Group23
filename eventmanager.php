@@ -61,7 +61,7 @@ if(isset($_SESSION['Email'])){
     $final_statement->bind_param('sisssi',$name, $attendees,$dsc,$start,$end,$event);
     $final_statement->execute();
     $_SESSION['EventID'] = $event;
-    header('Location:./edit_event.php');
+    header('Location:./events.php');
     exit();
     #this is what handles deleting events
 }
