@@ -23,7 +23,7 @@ if(isset($_SESSION['Email'])){
         if($row = mysqli_fetch_assoc($isAdmin_Query->get_result())){
             ?>
             <p><strong>Create a new team</strong></p>
-            <form action="./new_team.php" id='team_creation' method='post'>
+            <form action="./create_new_team.php" id='team_creation' method='post'>
                 <button type="submit" name="Submit" value='Submit'>Create a new Team</button>
             </form>
             <?php
