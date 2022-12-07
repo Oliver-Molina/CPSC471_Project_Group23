@@ -70,11 +70,10 @@ if(isset($_SESSION['Email'])){
     </body>
     </html>
 <?php
-    $sql = 'SELECT EventName, No_Attendees, Description, StartDateTime, EndDateTime, EVENT_USES.RoomNo AS EuRN,
+    $sql = 'SELECT EventName, No_Attendees, Description, StartDateTime, EndDateTime, EVENT_USES.BuildingID,
     BName, BNo, StName, City, ProvStTr, Country FROM EVENT_ JOIN EVENT_USES 
     ON EVENT_.EventID = EVENT_USES.EventID
-    JOIN ROOM ON EVENT_USES.RoomNo = ROOM.RoomNo
-    JOIN BUILDING ON ROOM.BuildingID = BUILDING.ID
+    JOIN BUILDING ON BUILDING.ID = EVENT_USES.BuildingID
     WHERE EVENT_.EventID = ?';
     $query = $conn -> prepare($sql);
     $query->bind_param('i',$_POST['EventID']);
@@ -86,8 +85,7 @@ if(isset($_SESSION['Email'])){
     <div class='address_block' id='a'>
         <h2 style='text-align:center'>Location Information</h2>
         <h3>Address:</h3>
-        <p><?php echo $row['BName'];?>, Room 
-        <?php echo $row['EuRN'];?><br>
+        <p><?php echo $row['BName'];?>
         #<?php echo $row['BNo'];?> <?php echo $row['StName'];?>,
         <?php echo $row['City'];?>,
         <?php echo $row['ProvStTr'];?>,

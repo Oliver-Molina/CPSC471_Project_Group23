@@ -112,11 +112,10 @@ if(isset($_SESSION['Email'])){
     </body>
     </html>
 <?php
-    $sql = 'SELECT EventName, No_Attendees, Description, StartDateTime, EndDateTime, EVENT_USES.RoomNo AS EuRN,
-    BName, BNo, StName, City, ProvStTr, Country, EVENT_USES.BuildingID AS BuildID FROM EVENT_ JOIN EVENT_USES 
+    $sql = 'SELECT EventName, No_Attendees, Description, StartDateTime, EndDateTime, EVENT_USES.BuildingID,
+    BName, BNo, StName, City, ProvStTr, Country, EVENT_USES.BuildingID FROM EVENT_ JOIN EVENT_USES 
     ON EVENT_.EventID = EVENT_USES.EventID
-    JOIN ROOM ON EVENT_USES.RoomNo = ROOM.RoomNo
-    JOIN BUILDING ON ROOM.BuildingID = BUILDING.ID
+    JOIN BUILDING ON EVENT_USES.BuildingID = BUILDING.ID
     WHERE EVENT_.EventID = ?';
     $query = $conn -> prepare($sql);
     $query->bind_param('i',$_POST['EventID']);
@@ -150,13 +149,13 @@ if(isset($_SESSION['Email'])){
             <div class='start_block'>
                 <label style='font-size:16pt'><b>Event Start:</b></label>
                 <!-- this might cause issues -->
-                <input style="font-color:black"type='datetime-local' name='start' id = 'start' value='<?php echo date('c',strtotime($row['StartDateTime']));?>'
+                <input style="font-color:black"type='datetime-local' name='start' id = 'start' value='<?php echo $row['StartDateTime'];?>'
                 autocomplete='off'>
             </div>
             <div class='end_block'>
                 <label style='font-size:16pt'><b>Event End:</b></label>
                 <!-- this might cause issues -->
-                <input style="font-color:black"type='datetime-local' name='end' id = 'end' value='<?php echo date('c',strtotime($row['EndDateTime']));?>'
+                <input style="font-color:black"type='datetime-local' name='end' id = 'end' value='<?php echo $row['EndDateTime'];?>'
                 autocomplete='off'>
             </div>
         </div>

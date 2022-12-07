@@ -270,14 +270,14 @@ insert into `EVENT_`(EventName, No_Attendees, `Description`, StartDateTime, EndD
 ("Event5",65,"Clubs Week: Interested applicants can come to this event to get to know about the club and what it has to offer.","2022-11-30  20:00:00","2022-11-30  22:00:00","ORG0000003","9"),
 ("Event8",55,"Bake Sale: Members of the clubs will bring self-baked goods for this fundraiser event.","2023-01-11  12:30:00","2023-01-11  13:30:00","ORG0000003","9");
 insert into EVENT_USES values
-("21", "3"),
+("4", "3"),
 ("3", "6"),
 ("2", "9"),
 ("5", "1"),
 ("5", "4"),
-("13", "7"),
-("21", "10"),
-("14", "2"),
+("4", "7"),
+("4", "10"),
+("4", "2"),
 ("2", "5"),
 ("9", "8");
 INSERT INTO BELONGS VALUES
