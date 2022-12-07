@@ -17,14 +17,13 @@ if(isset($_SESSION['Email'])){
     ID = ? AND BName = ? AND BNo = ? AND StName = ? 
     AND City = ? AND ProvStTr = ? AND Country = ?';
     $event = $_POST['EventID'];
-    $roomNo = $_POST['roomNo'];
     $bName = $_POST['bname'];
     $stName = $_POST['stName'];
     $bNo = $_POST['bNo'];
     $city = $_POST['city'];
     $provsttr = $_POST['provstt'];
     $country = $_POST['country'];
-    $bID = $_POST = ['BuildID'];
+    $bID = $_POST['BuildID'];
     $query = $conn->prepare($sql);
     $query->bind_param('isissss',$bID, $bName, $bNo, $stName, $city, $provsttr, $country);
     $query->execute();
@@ -47,16 +46,13 @@ if(isset($_SESSION['Email'])){
             exit();
         }
     }
-    $insert_not_exists = $conn->prepare('INSERT IGNORE INTO ROOM VALUES(?,NULL,NULL,?)');
-    $insert_not_exists->bind_param('si',$_POST['roomNo'],$_POST['BuildID']);
+    $insert_not_exists = $conn->prepare('INSERT IGNORE INTO EVENT_USES(BuildingID, EventID) VALUES(?,?)');
+    $insert_not_exists->bind_param('ii',$_POST['BuildID'],$_POST['EventID']);
     $insert_not_exists->execute();
-    $insert_not_exists = $conn->prepare('INSERT IGNORE INTO EVENT_USES(RoomNo, BuildingID, EventID) VALUES(?,?,?)');
-    $insert_not_exists->bind_param('sii',$_POST['roomNo'],$_POST['BuildID'],$event);
-    $insert_not_exists->execute();
-    $start = str_replace('T',' ',$_POST['start']);
-    $end = str_replace('T',' ',$_POST['end']);
+    $start= $_POST['start'];                  
+    $end = $_POST['end'];
     $name = $_POST['ename'];
-    $attendees = $_POST['number'];
+    $attendees = $_POST['attendees'];
     $dsc = $_POST['desc'];
     $update_query = 
     'UPDATE EVENT_ SET EventName = ?, No_Attendees = ?, Description = ?, StartDateTime = ?, EndDateTime=?
@@ -64,7 +60,8 @@ if(isset($_SESSION['Email'])){
     $final_statement = $conn->prepare($update_query);
     $final_statement->bind_param('sisssi',$name, $attendees,$dsc,$start,$end,$event);
     $final_statement->execute();
-    header('Location: ./event.php');
+    $_SESSION['EventID'] = $event;
+    header('Location:./edit_event.php');
     exit();
     #this is what handles deleting events
 }

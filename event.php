@@ -62,7 +62,7 @@ if(isset($_SESSION['Email'])){
     <title>Event</title>
     </head>
     <body>
-        <h1>Event <?php  echo $_POST['EventID'];?></h3>
+        <h1>Event Details</h3>
         <p>Here you will access info on a specific event</p>
         
         <a href= './events.php'>Back to Events</a><br>

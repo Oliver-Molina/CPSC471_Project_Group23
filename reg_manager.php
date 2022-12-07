@@ -65,7 +65,6 @@ else{
     else{
         echo 'Failed';
     }
-
     $_SESSION['Email']=$email;
     $_SESSION['OrgID']=$orgid;
     header("Location: ./homepage.php");

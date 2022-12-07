@@ -3,6 +3,9 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 if(isset($_SESSION['Email'])){
+    if(isset($_SESSION['EventID'])){
+        $_POST['EventID'] = $_SESSION['EventID'];
+    }
     if(isset($_POST['EventID']) == false){
         header('Location: ./index.php?Invalid Event');
         exit();
@@ -102,7 +105,7 @@ if(isset($_SESSION['Email'])){
     </style>                 
     <html>
     <head>
-    <title>Event</title>
+    <title>Edit Event</title>
     </head>
     <body>
         <h1>Event <?php  echo $_POST['EventID'];?></h3>
@@ -123,22 +126,17 @@ if(isset($_SESSION['Email'])){
     $result=$query->get_result();
     $row=mysqli_fetch_assoc($result);
     ?>
+    <form action='./eventmanager.php' method='post'>
     <div class='container'>
     <div class='address_block' id='a'>
-        <form name='details' action='./eventmanager.php' method='post'>
         <h2 style='text-align:center'>Location Information</h2>
         <h3>Address:</h3>
         <label>Building Name</label>
-        <label style='padding-left:50px'>Room Number</label><br>
         <input type='text' name = 'bname' id='bname' maxlength='60' autocomplete='off' value='<?php echo $row['BName'];?>'
-        required>
-        <input type='text' name = 'roomNo' id='roomNo' maxlength='8' autocomplete='off' value='<?php echo $row['EuRN'];?>'
         required><br>
         <label>Building Number</label> <label style='padding-left:35px;'>Street</label><br>
-        <input type='number' name = 'bNo' id='bNo' maxlength='5' autocomplete='off' value='<?php echo $row['BNo'];?>'
-        required>
-        <input type='text' name = 'stName' id='stName' maxlength='100' autocomplete='off' value='<?php echo $row['StName'];?>' 
-        required><br>
+        <input type='number' name = 'bNo' id='bNo' maxlength='5' autocomplete='off' value='<?php echo $row['BNo'];?>'required>
+        <input type='text' name = 'stName' id='stName' maxlength='100' autocomplete='off' value='<?php echo $row['StName'];?>'required><br>
         <label>City</label>
         <label style='padding-left:126px'>Province/State/Territory</label><br>
         <input type='text' name = 'city' id='city' maxlength='30' autocomplete='off' value='<?php echo $row['City'];?>'>
@@ -149,14 +147,12 @@ if(isset($_SESSION['Email'])){
             <div class='start_block'>
                 <label style='font-size:16pt'><b>Event Start:</b></label>
                 <!-- this might cause issues -->
-                <input style="font-color:black"type='datetime-local' name='start' id = 'start' value='<?php echo $row['StartDateTime'];?>'
-                autocomplete='off'>
+                <input required style="font-color:black"type='datetime-local' name='start' id = 'start' value='<?php echo $row['StartDateTime'];?>'autocomplete='off'>
             </div>
             <div class='end_block'>
                 <label style='font-size:16pt'><b>Event End:</b></label>
                 <!-- this might cause issues -->
-                <input style="font-color:black"type='datetime-local' name='end' id = 'end' value='<?php echo $row['EndDateTime'];?>'
-                autocomplete='off'>
+                <input required style="font-color:black"type='datetime-local' name='end' id = 'end' value='<?php echo $row['EndDateTime'];?>'autocomplete='off'>
             </div>
         </div>
     </div>
@@ -169,11 +165,12 @@ if(isset($_SESSION['Email'])){
         <h3>Description:</h3>
             <textarea name='desc' id='desc' style='margin-right:200px' rows='4' min='1' max='500'cols='50'><?php echo $row['Description'];?></textarea>
     </div>
+
     </div>
     <input type='hidden' name='EventID' id='details' value='<?php echo $_POST['EventID']?>'>
     <input type='hidden' name='Altered' id='Altered' value='<?php echo true ?>'>
     <input type='hidden' name='BuildID' id='bid' value='<?php echo $row['BuildID'];?>'>
-    <button class='b1' id='buttonA' type='submit' name='Submit' id='Submit'><b>Save all changes<b></button>
+    <button type='submit' name='Submit' id='Submit'><b>Save all changes<b></button>
     </form>
 
 <?php

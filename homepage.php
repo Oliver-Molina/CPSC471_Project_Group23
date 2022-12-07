@@ -3,6 +3,9 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 if(isset($_SESSION['Email'])){
+    if(isset($_SESSION['EventID'])){
+        unset($_SESSION['EventID']);
+    }
     include 'db_connection.php';
     $query='SELECT * FROM ORGANIZATION Where ID = ?';
     $user_query=$conn->prepare($query);
