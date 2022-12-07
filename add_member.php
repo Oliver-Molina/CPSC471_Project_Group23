@@ -1,14 +1,14 @@
 <?php 
-session_start();
+session_start();    include 'db_connection.php';
 if(isset($_SESSION['Email'])){
-    include 'db_connection.php';
+
     $isAdmin_Query->execute();
     if ($row = mysqli_fetch_assoc($isAdmin_Query->get_result())) {
         ?>
         <!DOCTYPE html>
         <html>
         <head>
-        <title>New Team</title>
+        <title>Add member</title>
         </head>
         <style>
             .button{
@@ -36,23 +36,30 @@ if(isset($_POST['Submit'])){
 		$firstN = $_POST['FName_Mem'];
 		$lastN = $_POST['LName_Mem'];
 		
-		$query1 = "SELECT Email FROM MEMBER WHERE Fname = ?, Lname = ?" ;
+		$query1 = "SELECT Email FROM MEMBER WHERE Fname = ? AND Lname = ?" ;
 		$user_query1 = $conn->prepare($query1);
         $user_query1->bind_param('ss', $firstN, $lastN);
         $user_query1->execute();
         $results1 = $user_query1->get_result();
 		
-		$memEmail = $results1; 
-		$teamID = $_POST['teamID'];
-		$query2 = "INSERT INTO BELONGS((MEmail, Team_ID) values ('$memEmail', '$teamID'))";
 		
-		$run = mysqli_query($conn, $query) or die(mysqli_error());
+		$query2 = "INSERT INTO BELONGS(MEmail, Team_ID) VALUES (?,?)";
+		
+		$memEmail = $results1; 
+		$teamID = $_SESSION['teamID'];
+		
+		$user_query2 = $conn->prepare($query2);
+        $user_query2->bind_param('si', $memEmail, $teamID);
+        $query2->execute();
+		$results2 = $query2->get_result();
 		
 	}
 }			
 			?>
-			
-            <a href="./homepage.php"> Homepage </a>
+			<div class="back_links">
+        <a href= './teams.php'>Back to Teams</a><br>
+        <a href="./homepage.php">Homepage</a>
+    </div>
         </body>
         </html>
         <?php
