@@ -11,24 +11,13 @@ CREATE TABLE BUILDING(
 	Country	    VARCHAR(30),
     PRIMARY KEY(ID)
 );
-CREATE TABLE ROOM(
-	RoomNo		VARCHAR(8) NOT NULL,
-    BuildingID	INT,
-	PRIMARY KEY(RoomNo, BuildingID),
-    FOREIGN KEY(BuildingID) REFERENCES BUILDING(ID)
-    ON DELETE CASCADE ON UPDATE CASCADE
-);
 CREATE TABLE ORGANIZATION(
 	ID			CHAR(10)		NOT NULL,
 	OrgName		VARCHAR(30)		NOT NULL,
 	`Description`	VARCHAR(500),
-	HRM_No		VARCHAR(8),
 	HRM_BID		INT,
     PRIMARY KEY(ID),
-    FOREIGN KEY(HRM_No) REFERENCES ROOM(RoomNo) ON DELETE SET NULL
-    ON UPDATE CASCADE,
-    
-    FOREIGN KEY(HRM_BID) REFERENCES ROOM(BuildingID) ON DELETE SET NULL
+    FOREIGN KEY(HRM_BID) REFERENCES BUILDING(ID) ON DELETE SET NULL
     ON UPDATE CASCADE
 );
 CREATE TABLE MEMBER(
@@ -42,14 +31,12 @@ CREATE TABLE MEMBER(
     FOREIGN KEY(OrgID) REFERENCES ORGANIZATION(ID)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
-
 CREATE TABLE ADMIN(
 	Email		   VARCHAR(320)		NOT NULL,
 	PRIMARY KEY(Email),
 	FOREIGN KEY(Email) REFERENCES MEMBER(Email)
 	ON DELETE CASCADE ON UPDATE CASCADE
 );
-
 CREATE TABLE PROJECT(
 	ID		    INT AUTO_INCREMENT NOT NULL,
 	PName		VARCHAR(30)		NOT NULL,
@@ -60,7 +47,6 @@ CREATE TABLE PROJECT(
     FOREIGN KEY(OrgID) REFERENCES ORGANIZATION(ID) 
     ON DELETE CASCADE ON UPDATE CASCADE
 );
- 
 CREATE TABLE TEAM(
 	ID		    INT AUTO_INCREMENT    NOT NULL,
 	TName		VARCHAR(30)	    NOT NULL,
@@ -102,13 +88,12 @@ CREATE TABLE EVENT_(
 );
 
 CREATE TABLE EVENT_USES(
-	RoomNo	    VARCHAR(8)	NOT NULL,
-	BuildingID	INT		NOT NULL,
+	BuildingID	INT	NOT NULL,
 	EventID 	INT	NOT NULL,
-    PRIMARY KEY(RoomNo, BuildingID, EventID),
+    PRIMARY KEY(BuildingID, EventID),
     FOREIGN KEY(EventID) REFERENCES EVENT_(EventID) 
     ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY(RoomNo, BuildingID) REFERENCES ROOM(RoomNo, BuildingID)
+    FOREIGN KEY(BuildingID) REFERENCES BUILDING(ID)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -175,37 +160,12 @@ INSERT INTO BUILDING (BName, BNo, StName, City, ProvStTr, Country) VALUES
 ("Building 6","6","Example St","Windsor","Ontario","Canada"),
 ("Building 7","7","Placeholder St","Toronto","Ontario","Canada"),
 ("Building 8","8","Generic Street","Generic City","Province","Country"),
-("Building 9","9","Study Street","Generic City","Province","Country"),
-("Building 10","10","Euneva Street","Generic City","Province","Country"),
-("Building 11","90","Palm Parkway","Cupertino","California","USA"),
-("Building 12","72","10th Avenue","Calgary","Alberta","Canada"),
-("Building 13","43","Placeholder St","Generic City","Province","Country"),
-("Building 14","56","Generic Street","Generic City","Province","Country"),
-("Building 15","1","Infinite Loop","Cupertino","California","USA"),
-("Building 16","51245","Main Street","Generic City","Province","Country"),
-("Building 17","12341","Maple Street","Ottawa","Ontario","Canada"),
-("Building 18","12031","Seasame Street","Generic City","Province","Country"),
-("Building 19","8023","Hadron Blvd","Generic City","Province","Country"),
-("Building 20","42069","Neat Street","Los Angeles","California","USA"),
-("Building 21","42069","Neat Street","Los Angeles","California","USA");
-
-INSERT INTO ROOM VALUES
-("231","S",8,"20"),
-("33-A","S",8,"9"),
-("109","S",8,"10"),
-("111-B","L",120,"11"),
-("16","S",10,"12"),
-("020","S",10,"13"),
-("025","M",25,"14"),
-("246","M",25,"15"),
-("AMD-167","M",25,"21"),
-("NOC-120","M",25,"2"),
-("030-C","M",25,"3");
+("Building 9","9","Study Street","Generic City","Province","Country");
 
 INSERT INTO ORGANIZATION VALUES
-("ORG0000001","Organization1","Lorem ipsum dolor sit amet, consectetur adipiscing elit","090","19"),
-("ORG0000002","Organization2","Tomato Sauce, Jar","112","13"),
-("ORG0000003","Organization3","There are two kinds of people in the world: those who complete their sentences and-","248","14");
+("ORG0000001","Organization1","Lorem ipsum dolor sit amet, consectetur adipiscing elit",6),
+("ORG0000002","Organization2","Tomato Sauce, Jar",3),
+("ORG0000003","Organization3","There are two kinds of people in the world: those who complete their sentences and-",9);
 
 INSERT INTO MEMBER VALUES
 ("Samantha","Hutchins","Female","samantha.hutchins@gmail.com","ORG0000001","Password"),
@@ -309,19 +269,17 @@ insert into `EVENT_`(EventName, No_Attendees, `Description`, StartDateTime, EndD
 ("Event2",40,"Clubs Week: Interested applicants can come to this event to get to know about the club and what it has to offer.","2023-05-21  20:00:00","2023-07-21  21:00:00","ORG0000003","9"),
 ("Event5",65,"Clubs Week: Interested applicants can come to this event to get to know about the club and what it has to offer.","2022-11-30  20:00:00","2022-11-30  22:00:00","ORG0000003","9"),
 ("Event8",55,"Bake Sale: Members of the clubs will bring self-baked goods for this fundraiser event.","2023-01-11  12:30:00","2023-01-11  13:30:00","ORG0000003","9");
-
 insert into EVENT_USES values
-("AMD-167","21", "3"),
-("190-A","3", "6"),
-("161-A","2", "9"),
-("ENB-123","5", "1"),
-("ENB-123","5", "4"),
-("112","13", "7"),
-("ENE-201","21", "10"),
-("248","14", "2"),
-("EED-123","2", "5"),
-("025","9", "8");
-
+("21", "3"),
+("3", "6"),
+("2", "9"),
+("5", "1"),
+("5", "4"),
+("13", "7"),
+("21", "10"),
+("14", "2"),
+("2", "5"),
+("9", "8");
 INSERT INTO BELONGS VALUES
 ("samantha.hutchins@gmail.com","1"),
 ("terry.crews@gmail.com","1"),
@@ -450,5 +408,3 @@ INSERT INTO REQUIRES VALUES
 ("14",8,"Deliverable B-2","2"),
 ("2",1,"Deliverable B-3","2");
 
-SELECT RoomNo FROM ROOM WHERE EXISTS(
-SELECT * FROM EVENT_USES WHERE EVENT_USES.RoomNo = ROOM.RoomNo)
