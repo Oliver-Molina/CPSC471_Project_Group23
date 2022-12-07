@@ -31,12 +31,13 @@ if(isset($_SESSION['Email'])){
 if(isset($_POST['Submit'])){
 	if(!empty($_POST['Mem_Email'])){
 		
-		$query2 = "DELETE FROM BELONGS WHERE Belongs.MEmail = ?";
+		$query2 = "DELETE FROM BELONGS WHERE Belongs.MEmail = ? AND Belongs.Team_ID = ?";
 		
 		$memEmail = $_POST['Mem_Email']; 
+		$teamID = $_SESSION['teamID'];
 		
 		$user_query2 = $conn->prepare($query2);
-        $user_query2->bind_param('s', $memEmail);
+        $user_query2->bind_param('si', $memEmail, $teamID);
         $user_query2->execute();
 		$results2 = $user_query2->get_result();
 		
