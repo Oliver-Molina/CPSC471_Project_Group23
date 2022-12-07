@@ -36,7 +36,7 @@ if(isset($_POST['Submit'])){
 		$firstN = $_POST['FName_Mem'];
 		$lastN = $_POST['LName_Mem'];
 		
-		$query1 = "SELECT Email FROM MEMBER WHERE FName = ?, LName = ?" ;
+		$query1 = "SELECT Email FROM MEMBER WHERE Fname = ?, Lname = ?" ;
 		$user_query1 = $conn->prepare($query1);
         $user_query1->bind_param('ss', $firstN, $lastN);
         $user_query1->execute();
