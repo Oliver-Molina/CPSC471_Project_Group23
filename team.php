@@ -1,5 +1,7 @@
 <?php 
 session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 if(isset($_SESSION['Email'])){
     if(isset($_POST['teamID'])){
         $_SESSION['teamID'] = $_POST['teamID'];
@@ -108,17 +110,32 @@ if(isset($_SESSION['Email'])){
     $isAdmin_Query->execute();
     if ($row = mysqli_fetch_assoc($isAdmin_Query->get_result())) {
         ?>
-        
-			
-        <form action="./add_member.php" id='add_member' method='post'>
-            <button type="submit" name="Submit" value='Submit'>Add member</button>
+        <form action="./edit_team.php" id='edit_team' method='post'>
+            <button type="submit" name="Submit" value='Submit'>Edit this team</button>
         </form>
-		
-		<form action="./remove_member.php" id='remove_member' method='post'>
-            <button type="submit" name="Submit" value='Submit'>Remove member</button>
-        </form>
-		
-			
+        <?php
+    }
+    $query = 'SELECT * FROM DELIVERABLE JOIN TEAM ON TeamID = ID WHERE TEAM.ID = ?';
+    $user_query = $conn->prepare($query);
+    $user_query->bind_param('i',$_POST['teamID']);
+    $user_query->execute();
+    $result = $user_query->get_result();
+    ?>
+    <h2>Deliverables</h2>
+    <table class = center>
+        <tr>
+            <th>Deliverable Name</th>
+            <th>Start Date</th>
+            <th>Due Date</th>
+        </tr>
+    <?php
+    while($row=mysqli_fetch_assoc($result)){
+        ?>
+        <tr>
+            <td><?php echo $row['DName'];?></td>
+            <td><?php echo $row['StartDate'];?></td>
+            <td><?php echo $row['EndDate'];?></td>
+        </tr>
         <?php
     }
 
