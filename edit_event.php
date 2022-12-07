@@ -113,7 +113,7 @@ if(isset($_SESSION['Email'])){
     </html>
 <?php
     $sql = 'SELECT EventName, No_Attendees, Description, StartDateTime, EndDateTime, EVENT_USES.RoomNo AS EuRN,
-    BName, BNo, StName, City, ProvStTr, Country FROM EVENT_ JOIN EVENT_USES 
+    BName, BNo, StName, City, ProvStTr, Country, EVENT_USES.BuildingID AS BuildID FROM EVENT_ JOIN EVENT_USES 
     ON EVENT_.EventID = EVENT_USES.EventID
     JOIN ROOM ON EVENT_USES.RoomNo = ROOM.RoomNo
     JOIN BUILDING ON ROOM.BuildingID = BUILDING.ID
@@ -126,37 +126,37 @@ if(isset($_SESSION['Email'])){
     ?>
     <div class='container'>
     <div class='address_block' id='a'>
-        <form name='details' action='./edit_event.php' onsubmit="return validate()" method='post'>
+        <form name='details' action='./eventmanager.php' method='post'>
         <h2 style='text-align:center'>Location Information</h2>
         <h3>Address:</h3>
         <label>Building Name</label>
         <label style='padding-left:50px'>Room Number</label><br>
         <input type='text' name = 'bname' id='bname' maxlength='60' autocomplete='off' value='<?php echo $row['BName'];?>'
         required>
-        <input type='text' name = 'rmNo' id='rmNo' maxlength='8' autocomplete='off' value='<?php echo $row['EuRN'];?>'
+        <input type='text' name = 'roomNo' id='roomNo' maxlength='8' autocomplete='off' value='<?php echo $row['EuRN'];?>'
         required><br>
         <label>Building Number</label> <label style='padding-left:35px;'>Street</label><br>
         <input type='number' name = 'bNo' id='bNo' maxlength='5' autocomplete='off' value='<?php echo $row['BNo'];?>'
         required>
-        <input type='text' name = 'stname' id='stnm' maxlength='100' autocomplete='off' value='<?php echo $row['StName'];?>' 
+        <input type='text' name = 'stName' id='stName' maxlength='100' autocomplete='off' value='<?php echo $row['StName'];?>' 
         required><br>
         <label>City</label>
         <label style='padding-left:126px'>Province/State/Territory</label><br>
         <input type='text' name = 'city' id='city' maxlength='30' autocomplete='off' value='<?php echo $row['City'];?>'>
-        <input type='text' name = 'pst' id='pst' maxlength='30' autocomplete='off' value='<?php echo $row['ProvStTr'];?>'><br>
+        <input type='text' name = 'provstt' id='provstt' maxlength='30' autocomplete='off' value='<?php echo $row['ProvStTr'];?>'><br>
         <label>Country</label><br>
         <input type='text' name = 'country' id='country' maxlength='30' autocomplete='off' value='<?php echo $row['Country'];?>'><br>
         <div class='subcontainer'>
             <div class='start_block'>
                 <label style='font-size:16pt'><b>Event Start:</b></label>
                 <!-- this might cause issues -->
-                <input style="font-color:black"type='datetime-local' name='start' id = 'estart' value='<?php echo date('c',strtotime($row['StartDateTime']));?>'
+                <input style="font-color:black"type='datetime-local' name='start' id = 'start' value='<?php echo date('c',strtotime($row['StartDateTime']));?>'
                 autocomplete='off'>
             </div>
             <div class='end_block'>
                 <label style='font-size:16pt'><b>Event End:</b></label>
                 <!-- this might cause issues -->
-                <input style="font-color:black"type='datetime-local' name='start' id = 'eend' value='<?php echo date('c',strtotime($row['EndDateTime']));?>'
+                <input style="font-color:black"type='datetime-local' name='end' id = 'end' value='<?php echo date('c',strtotime($row['EndDateTime']));?>'
                 autocomplete='off'>
             </div>
         </div>
@@ -168,11 +168,12 @@ if(isset($_SESSION['Email'])){
         <h3>Number of Attendees:</h3>
         <input required type = 'number' autocomplete='off' name='attendees' min='1' max='999' id='ename' value=<?php echo $row['No_Attendees'];?>><br>
         <h3>Description:</h3>
-            <textarea id='details' style='margin-right:200px' rows='4' min='1' max='500'cols='50'><?php echo $row['Description'];?></textarea>
+            <textarea name='desc' id='desc' style='margin-right:200px' rows='4' min='1' max='500'cols='50'><?php echo $row['Description'];?></textarea>
     </div>
     </div>
     <input type='hidden' name='EventID' id='details' value='<?php echo $_POST['EventID']?>'>
     <input type='hidden' name='Altered' id='Altered' value='<?php echo true ?>'>
+    <input type='hidden' name='BuildID' id='bid' value='<?php echo $row['BuildID'];?>'>
     <button class='b1' id='buttonA' type='submit' name='Submit' id='Submit'><b>Save all changes<b></button>
     </form>
 

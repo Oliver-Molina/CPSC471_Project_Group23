@@ -13,10 +13,8 @@ CREATE TABLE BUILDING(
 );
 CREATE TABLE ROOM(
 	RoomNo		VARCHAR(8) NOT NULL,
-	Size		CHAR(1),
-	EstCapacity	INT,
     BuildingID	INT,
-	PRIMARY KEY(RoomNO, BuildingID),
+	PRIMARY KEY(RoomNo, BuildingID),
     FOREIGN KEY(BuildingID) REFERENCES BUILDING(ID)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -27,9 +25,10 @@ CREATE TABLE ORGANIZATION(
 	HRM_No		VARCHAR(8),
 	HRM_BID		INT,
     PRIMARY KEY(ID),
-    FOREIGN KEY(HRM_No) REFERENCES ROOM(RoomNo)
+    FOREIGN KEY(HRM_No) REFERENCES ROOM(RoomNo) ON DELETE SET NULL
     ON UPDATE CASCADE,
-    FOREIGN KEY(HRM_BID) REFERENCES ROOM(BuildingID)
+    
+    FOREIGN KEY(HRM_BID) REFERENCES ROOM(BuildingID) ON DELETE SET NULL
     ON UPDATE CASCADE
 );
 CREATE TABLE MEMBER(
@@ -191,23 +190,16 @@ INSERT INTO BUILDING (BName, BNo, StName, City, ProvStTr, Country) VALUES
 ("Building 21","42069","Neat Street","Los Angeles","California","USA");
 
 INSERT INTO ROOM VALUES
-("124","S",8,"21"),("121-A","M",15,"21"),("121-B","S",7,"21"),
-("122","S",8,"21"),("ENE-201","L",50,"21"),("161-A","L",100,"2"),
-("190-A","L",100,"3"),("545","M",15,"4"),("203","M",15,"5"),
-("180","M",15,"6"),("090","M",15,"7"),("135","M",15,"8"),
-("112","L",30,"9"),("323","S",10,"10"),("782","S",10,"11"),
-("631","S",10,"12"),("ENE-201","S",10,"13"),("EB-03","S",10,"14"),
-("HOM-405","S",10,"15"),("TI-099","S",10,"16"),("317","M",20,"17"),
-("ABC-123","S",12,"18"),("090","L",60,"19"),("NEC-012","M",25,"20"),
-("025","L",40,"9"),("MIT-333","M",25,"10"),("EAN-212","M",25,"11"),
-("112","M",25,"12"),("112","L",75,"13"),("248","L",50,"14"),
-("0197","M",20,"15"),("EEC-172","M",20,"21"),("EEA-297","S",5,"21"),
-("EEB-212","M",25,"21"),("EED-123","M",25,"2"),("WOT-123","M",25,"3"),
-("061","M",25,"4"),("020","M",25,"5"),("025","L",150,"5"),
-("ENB-123","L",150,"5"),("162-B","S",12,"19"),("231","S",8,"20"),
-("33-A","S",8,"9"),("109","S",8,"10"),("111-B","L",120,"11"),
-("16","S",10,"12"),("020","S",10,"13"),("025","M",25,"14"),
-("246","M",25,"15"),("AMD-167","M",25,"21"),("NOC-120","M",25,"2"),
+("231","S",8,"20"),
+("33-A","S",8,"9"),
+("109","S",8,"10"),
+("111-B","L",120,"11"),
+("16","S",10,"12"),
+("020","S",10,"13"),
+("025","M",25,"14"),
+("246","M",25,"15"),
+("AMD-167","M",25,"21"),
+("NOC-120","M",25,"2"),
 ("030-C","M",25,"3");
 
 INSERT INTO ORGANIZATION VALUES
@@ -457,3 +449,6 @@ INSERT INTO REQUIRES VALUES
 ("5",4,"Deliverable A-3","2"),
 ("14",8,"Deliverable B-2","2"),
 ("2",1,"Deliverable B-3","2");
+
+SELECT RoomNo FROM ROOM WHERE EXISTS(
+SELECT * FROM EVENT_USES WHERE EVENT_USES.RoomNo = ROOM.RoomNo)
