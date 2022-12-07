@@ -23,7 +23,7 @@ if(isset($_SESSION['Email'])){
     </body>
     </html>
 <?php
-    $query = 'SELECT Fname, Lname, Email, Gender FROM M';
+    $query = 'SELECT * FROM MEMBER';
 }
 else{
     session_unset();

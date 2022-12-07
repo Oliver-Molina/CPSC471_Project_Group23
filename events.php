@@ -4,14 +4,33 @@ if(isset($_SESSION['Email'])){
 ?>
     <!DOCTYPE html>
     <style>
+       html{
+            background-color:#5DADE2;
+        }
         button{
+            font-size:16pt;
             text-align:center;
-            height:30px;
-            width:100px;
+            height:50pxpx;
+            width:250px;
+            background:white;
+            border:outset black 1px;
+            border-radius:30px
+        }
+        td{
+            padding-top:6px;
+            padding-bottom:6px;
+            padding-left:12px;
+            padding-right:12px;
         }
         .form_block{
             text-align:center;
             padding-top:20px;
+        }
+        table.center{
+            background:#5DADE2;
+            border-radius:10px;
+            margin-left:auto;
+            margin-right:auto;
         }
     </style>
     <html>
@@ -19,7 +38,7 @@ if(isset($_SESSION['Email'])){
     <title>Events</title>
     </head>
     <body>
-        <h1 style='font-family:helvetica;color:tomato;text-align:center;padding-bottom:20px'>This is the Events Page</h1>
+        <h1 style='font-family:helvetica;color:white;text-align:center;padding-bottom:20px'>This is the Events Page</h1>
         <p style="padding-left:100px">Here you will access your Events</p>
         <?php
         include 'db_connection.php';
@@ -36,26 +55,34 @@ if(isset($_SESSION['Email'])){
             <?php
         }
         else{
+            ?><table class ='center'><?php
             while($row = mysqli_fetch_assoc($result)){
                 ?>
             <div class='form_block'>
-                <form action="./event.php" id='event_submission' method='post'>
-                    <input type="hidden" name="EventID" value='<?php echo $row['EventID']?>'/>
-                    <button type="submit" name="Submit" value='Submit'><?php echo $row['EventName']?></button>
-                </form>
+                <tr>
+                <td>
+                    <form action="./event.php" id='event_submission' method='post'>
+                        <input type="hidden" name="EventID" value='<?php echo $row['EventID']?>'/>
+                        <button type="submit" name="Submit" value='Submit'><?php echo $row['EventName']?></button>
+                    </form>
+                </td>
+            <?php if(isset($_SESSION['Admin'])){?>
+                <td>
+                    <form action="./edit_event.php" id='event_submission' method='post'>
+                        <input type="hidden" name="EventID" value='<?php echo $row['EventID'];?>'/>
+                        <button type="submit" name="Submit" value='Submit'>Edit this event</button>
+                    </form>
+                </td>
             </div>
-                <?php
-            }
+            </body>
+            <?php } ?>
+            </tr><?php
+            } ?></table> <?php
         }
-    ?>
-        <a href="./homepage.php">homepage</a><br>
-    </body>
-    </html>
-    <?php 
-}
-else{
+}else{
     session_unset();
     header("Location: ./index.php");
     exit();
 }
-?>
+?><a href="./homepage.php">homepage</a><br>
+</html>
