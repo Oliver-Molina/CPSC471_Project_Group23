@@ -8,7 +8,6 @@ if(isset($_SESSION['Email'])){
 		.title_block{
 			font-family: helvetica;
 			text-align: center;
-
 		}
 		title,head{
 			font-family: helvetica;
