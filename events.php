@@ -84,7 +84,6 @@ if(isset($_SESSION['Email'])){
             <a href='./create_event.php'>Create an Event</a>
             <?php
         }
-        
 }else{
     session_unset();
     header("Location: ./index.php");

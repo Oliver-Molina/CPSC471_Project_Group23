@@ -43,14 +43,12 @@ if(isset($_SESSION['Email'])){
             font-size:16pt;
             border:outset black 2px;
             border-radius:30px;
-    
         }
         .discard_button{
             color:white;
             font-family:helvetica;
             background-color:maroon;
             margin-left:175px;
-
         }
         .submit_button{
             color:black;
@@ -58,7 +56,7 @@ if(isset($_SESSION['Email'])){
             margin-right:175px
         }
         .container{
-            height:450px;
+            height:500px;
             margin-top:10px;
             margin-left:10px;
             margin-right:10px;
@@ -96,7 +94,7 @@ if(isset($_SESSION['Email'])){
             text-align:center;
             border-right:1px solid black;
             border-left:1px solid black;
-            border-bottom:1px solid
+            border-bottom:1px solid;
             font-family:helvetica;
             font-size:12pt;
         }
@@ -110,6 +108,13 @@ if(isset($_SESSION['Email'])){
             font-size:12pt;
 
         }
+        select{
+            border:2px solid black;
+            background-color:white;
+            font-size:16pt;
+            width:250px;
+            font-family:helvetica;
+        }
     </style>                 
     <html>
     <head>
@@ -122,12 +127,11 @@ if(isset($_SESSION['Email'])){
     </body>
     </html>
 <?php
-    $teams = 'SELECT * FROM TEAMS WHERE TEAM.OrgID = ?';
+    $teams = 'SELECT ID, TName FROM TEAM WHERE TEAM.OrgID = ?';
     $stmt = $conn->prepare($teams);
     $stmt->bind_param('s',$_SESSION['OrgID']);
     $stmt->execute();
-    $result = $stmt->get_result();
-    
+    $result1 = $stmt->get_result();
     $sql = 'SELECT EventName, No_Attendees, Description, StartDateTime, EndDateTime, EVENT_USES.BuildingID,
     BName, BNo, StName, City, ProvStTr, Country, EVENT_USES.BuildingID FROM EVENT_ JOIN EVENT_USES 
     ON EVENT_.EventID = EVENT_USES.EventID
@@ -139,7 +143,7 @@ if(isset($_SESSION['Email'])){
     $result=$query->get_result();
     $row=mysqli_fetch_assoc($result);
     ?>
-    <form action='./eventmanager.php' method='post'>
+    <form action='./eventcreator.php' method='post'>
     <div class='container'>
     <div class='address_block' id='a'>
         <h2 style='text-align:center'>Location Information</h2>
@@ -176,12 +180,26 @@ if(isset($_SESSION['Email'])){
         <input required type = 'number' autocomplete='off' name='attendees' min='1' max='999' id='ename'><br>
         <h3>Description:</h3>
             <textarea name='desc' id='desc' style='margin-right:200px' rows='4' min='1' max='500'cols='50'></textarea>
+       
     </div>
     </div>
-    <table class='buttons'>
+    <table class='buttons' style='margin-top:15px'>
+        <tr>
+            <th></th>
+            <th style='font-family:helvetica;font-size:16pt'>Assigned Team</th>
+            <th></th>
+        </tr>
         <tr>
             <td><button class='submit_button' type='submit' name='Submit' id='Submit'><b>Save all changes<b></button></td>
-        </form>
+       
+        <td>
+        <select id='team' name='TeamID' required>
+            <?php while($row=mysqli_fetch_assoc($result1)){?>
+            <option value='<?php echo $row['ID']?>'><?php echo $row['TName']?></option>
+            <?php } ?>
+        </select>
+        </td>
+    </form>
     <form action='./create_event.php'>
         <td><button class='discard_button' type='submit' name='Submit' id='discard'><b>Discard all changes</b></button></td>
     </form>

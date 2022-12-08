@@ -40,68 +40,85 @@ if(isset($_SESSION['Email'])){
             text-align:center;
             color:green;
         }
-        button{
-            padding:16px;
-            color:white;
-            background-color:green;
-            font-size:16pt;
-            border:outset black 2px;
-            border-radius:5px;
-    
-        }
         .container{
-            height:450px;
+            display:grid;
+            position:static;
+            height:600px;
             margin-top:10px;
             margin-left:10px;
             margin-right:10px;
             background-color:white;
             font-family:helvetica;
-            margin-left:auto;
-            margin-right:auto;
             left:5%;
             right:5%;
             border:3px solid black;
             border-radius:30px;
         }
         .address_block{
+            grid-column-start:1;
+            grid-column-end:2;
             padding-left:30px;
-            width:45%;
-            float:left;
             font-family:helvetica;
         }
         .subcontainer{
-            float: left;
+            text-align:center;
+            grid-column-start:1;
+            grid-column-end:2;
+            display:inline-grid;
             border-top:1px solid black;
             border-bottom:1px solid black;
         }
         .logistics{
-            width:48%;
-            float:right;
+            grid-column-start:3;
+            grid-column-end:5;
             font-family:helvetica;
             border-left:1px solid black;
             padding-left:30px;
         }
         .start_block{
+            grid-column-start:1;
+            grid-column-end:2;
             padding-top:15px;
-            width:49%;
-            float:left;
-            text-align:center;
             border-right:1px solid black;
             border-left:1px solid black;
-            border-bottom:1px solid
+            border-bottom:1px solid;
             font-family:helvetica;
             font-size:12pt;
         }
         .end_block{
+            grid-column-start:2;
+            grid-column-end:3;
             padding-top:15px;
-            width:49%;
-            float:right;
-            text-align:center;
             border-right:1px solid black;
             font-family:helvetica;
             font-size:12pt;
-
         }
+        .button{
+            width:20px;
+            padding-top:10px;
+            font-size:14pt;
+        }
+        .deleter{
+            background-color:tomato;
+            border:1px solid black;
+            border-radius:30px;
+        }
+        .save{
+            background-color:rgba(46, 204, 113,40);
+            border:1px solid black;
+            border-radius:30px;
+            color:black;
+        }
+        table.middle{
+            margin-left:auto;
+            margin-right:auto;
+        }
+       .block{
+            text-align:center;
+            grid-column-start:1;
+            grid-column-end:5;
+            padding-top:10x;
+       }
     </style>                 
     <html>
     <head>
@@ -112,8 +129,7 @@ if(isset($_SESSION['Email'])){
         <p>Here you will access info on a specific event</p>
         <a href= './events.php'>Back to Events</a><br>
         <a href="./homepage.php">Homepage</a><br>
-    </body>
-    </html>
+  
 <?php
     $sql = 'SELECT EventName, No_Attendees, Description, StartDateTime, EndDateTime, EVENT_USES.BuildingID,
     BName, BNo, StName, City, ProvStTr, Country, EVENT_USES.BuildingID FROM EVENT_ JOIN EVENT_USES 
@@ -125,8 +141,11 @@ if(isset($_SESSION['Email'])){
     $query->execute();
     $result=$query->get_result();
     $row=mysqli_fetch_assoc($result);
-    $more 
-    ?>
+    $sql2 = 'SELECT * FROM MEMBER WHERE OrgID = ?';
+    $query4 = $conn->prepare($sql2);
+    $query4->bind_param('s',$_SESSION['OrgID']);
+    $query4->execute();
+    $result4 = $query4->get_result();?>
     <form action='./eventmanager.php' method='post'>
     <div class='container'>
     <div class='address_block' id='a'>
@@ -139,7 +158,7 @@ if(isset($_SESSION['Email'])){
         <input type='number' name = 'bNo' id='bNo' maxlength='5' autocomplete='off' value='<?php echo $row['BNo'];?>'required>
         <input type='text' name = 'stName' id='stName' maxlength='100' autocomplete='off' value='<?php echo $row['StName'];?>'required><br>
         <label>City</label>
-        <label style='padding-left:126px'>Province/State/Territory</label><br>
+        <label style='padding-left:115px'>Province/State/Territory</label><br>
         <input type='text' name = 'city' id='city' maxlength='30' autocomplete='off' value='<?php echo $row['City'];?>'>
         <input type='text' name = 'provstt' id='provstt' maxlength='30' autocomplete='off' value='<?php echo $row['ProvStTr'];?>'><br>
         <label>Country</label><br>
@@ -157,24 +176,48 @@ if(isset($_SESSION['Email'])){
             </div>
         </div>
     </div>
-    <div class='logistics'>
-        <h2 style='text-align:center'>Logistical Details</h2>
-        <h3>Event Name:</h3>
-        <input required type = 'text' autocomplete='off' name='ename' id='ename' value=<?php echo $row['EventName'];?>><br>
-        <h3>Number of Attendees:</h3>
-        <input required type = 'number' autocomplete='off' name='attendees' min='1' max='999' id='ename' value=<?php echo $row['No_Attendees'];?>><br>
-        <h3>Description:</h3>
-            <textarea name='desc' id='desc' style='margin-right:200px' rows='4' min='1' max='500'cols='50'><?php echo $row['Description'];?></textarea>
-    </div>
-
-    </div>
     <input type='hidden' name='EventID' id='details' value='<?php echo $_POST['EventID']?>'>
     <input type='hidden' name='Altered' id='Altered' value='<?php echo true ?>'>
     <input type='hidden' name='BuildID' id='bid' value='<?php echo $row['BuildID'];?>'>
-    <button type='submit' name='Submit' id='Submit'><b>Save all changes<b></button>
+    <div class='logistics'>
+        <h2 style='text-align:center'>Logistical Details</h2>
+        <label for='ename'><b>Event Name</b></label><br>
+        <input required type = 'text' autocomplete='off' name='ename' id='ename' value=<?php echo $row['EventName'];?>><br>
+        <label for='attendees'><b>Number of Attendees:</b>
+        <input required type = 'number' autocomplete='off' name='attendees' min='1' max='999' id='attendees' value=<?php echo $row['No_Attendees'];?>><br>
+        <h3>Description:</h3>
+            <textarea name='desc' id='desc' style='margin-right:200px' rows='4' min='1' max='500'cols='50'><?php echo $row['Description'];?></textarea>
+    </div>
+     <div class = 'block'>
+        <h3> Invite Someone </h3>
+        <form action='./send_invite.php' method='post'>
+        <select id='emailselect' name='MemEmail' onfocus='this.size=5'>
+        <?php
+        while($rowset=mysqli_fetch_assoc($result4)){?>
+        
+            <option value='<?php echo $rowset['Email']?>'><?php echo $rowset['Fname']?> <?php echo $rowset['Lname']?></option><?php
+        }
+        ?>
+        </select><button style='border-raidus:5px;border:1px solid black' class='invite-button' type='submit' name='invite' id='invite'>Send invite</button>
+        <input type = 'hidden' name='EventID' id='remove' value='<?php echo $_POST['EventID']?>'>
+        </form>
+    </div>
+    </div>
+    <table class='middle'>
+        <tr>
+            <td>
+        <button class='save'type='submit' name='Submit' id='Submit'><b>Save all changes<b></button>
+        </form>
+        </td>
+        <td>
+    <form action='./delete_event.php' method='post'>
+        <input type = 'hidden' name='EventID' id='remove' value='<?php echo $_POST['EventID']?>'>
+        <button class='deleter'type = 'submit' name='Delete' id='deleter'><b style='background-color:tomato;border-radius:30px;color:white'>Delete this event</b></button>
     </form>
-
-<?php
+    </td>
+    </tr>
+    </table>
+      </body><?php
 }
 else{
     session_unset();

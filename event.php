@@ -112,7 +112,7 @@ if(isset($_SESSION['Email'])){
             <p style='margin-right:200px'><?php echo $row['Description'];?></p>
     </div>
     </div>
-
+    
 <?php
 }
 else{
