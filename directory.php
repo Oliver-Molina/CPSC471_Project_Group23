@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <style>
+    html{
+        background:#e1faf9;
+    }
     table.center{
         margin-top:10px;
         border:solid black 2px;
@@ -10,8 +13,10 @@
         border-collapse:collapse;
     }
     .scrollblock{
+        background:white;
         border:solid black 2px;
         overflow-y:scroll;
+        overflow-x:scroll;
         height:650px;
     }
     th,td{
@@ -21,6 +26,17 @@
         padding-right:20px;
         border:solid black 1px;
         border-collapse:collapse;
+        text-align:center;
+    }
+    button{
+        text-align:center;
+        width:auto;
+        height:auto;
+        border:5px solid #0ad3ff;
+        border-radius:1px;
+        font-family:helvetica;
+        font-size:14pt;
+        background:#0ad3ff;
     }
 </style>
 <html>
@@ -53,6 +69,13 @@ else{
             <th>Gender</th>
             <th>Email Address</th>
             <th>User type</th>
+            <?php
+            if(isset($_SESSION['Admin'])){
+                ?>
+            <th>Promote to Admin</th>
+            <th>Kick</th>
+            <?php
+            }?>
         </tr>
     <?php
     while($row = mysqli_fetch_assoc($result)){
@@ -69,11 +92,26 @@ else{
                 else{
                     ?><td style="color:tomato"><b><?php echo 'Admin';?></b></td><?php
                 }
-                ?>
+                if(isset($_SESSION['Admin']) && $row['MEmail']!=$_SESSION['Email']){
+                    ?>
+                <td>
+                    <form action='./promote.php' method='post'>
+                    <input type='hidden' name='MemEmail' value='<?php echo $row['MEmail']?>'>
+                        <button type='Submit'name='sub'>Promote</button>
+                    </form>
+                </td>
+                <td>
+                    <form action='./kick.php' method='post'>
+                    <input type='hidden' name='MemEmail' value='<?php echo $row['MEmail']?>'>
+                    <button type='Submit'name='sub'>Kick</button>
+                    </form>
+                    <?php
+                    }?> 
+                </td>
         </tr>
         <?php
-    }
+        }
     ?></table></div>
-    <a href='./homepage.php'>Homepage</a>
+    <a style='font-family:helvetica;font-size:16pt' href='./homepage.php'>Homepage</a>
     <?php
 }?>

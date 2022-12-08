@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 error_reporting(E_ALL);
@@ -28,16 +29,24 @@ if(isset($_SESSION['Email'])){
         $_SESSION['Admin']='Yes';
     }
     ?>
+    <style>
+        html{
+            background:#e1faf9;
+        }</style>
     <!DOCTYPE html>
     <html>
     <head>
         <title style="font-family:helvetica"> Homepage</title>
     </head>
     <body>
-        <h1 style="font-family:helvetica">Homepage for <?php echo $row['OrgName']?> </h1>
+        <h1 style="font-family:helvetica;text-align:center">Homepage for <?php echo $row['OrgName']?> </h1>
         <h2 style="font-family:helvetica">Welcome to your homepage, <?php echo $row2['Fname'];?> <?php echo $row2['Lname'];?>!</h2>
-        <p style="font-family:helvetica"><?php echo $_SESSION['OrgID'];?></p>
-        <p style="font-family:helvetica"><?php echo $row['Description'];?></p>
+        <?php
+        if(isset($_SESSION['Admin'])){
+        ?>
+        <p style="font-family:helvetica"> Your Organization ID: <?php echo $_SESSION['OrgID'];?></p>
+        <?php
+        }?>
         <p style="font-family:helvetica;font-size:large"> <a href="./events.php">Events</a><br>
         <a href="./projects.php">Projects</a><br>
         <a href="./teams.php">Teams</a><br>
