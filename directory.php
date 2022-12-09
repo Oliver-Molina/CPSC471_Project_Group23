@@ -4,7 +4,7 @@
         background:#e1faf9;
     }
     table.center{
-        margin-top:10px;
+        background:white;
         border:solid black 2px;
         font-family:'helvetica neue';
         font-size:16pt;
@@ -13,7 +13,7 @@
         border-collapse:collapse;
     }
     .scrollblock{
-        background:white;
+        background:#e1faf9;
         border:solid black 2px;
         overflow-y:scroll;
         overflow-x:scroll;
@@ -105,11 +105,16 @@ else{
                     <input type='hidden' name='MemEmail' value='<?php echo $row['MEmail']?>'>
                     <button type='Submit'name='sub'>Kick</button>
                     </form>
-                    <?php
-                    }?> 
-                </td>
-        </tr>
-        <?php
+                </td><?php
+                    }
+                else{
+                    ?>
+                    <td>Unavailable</td>
+                    <td>Unavailable</td>
+        
+            </tr>
+            <?php
+            }
         }
     ?></table></div>
     <a style='font-family:helvetica;font-size:16pt' href='./homepage.php'>Homepage</a>

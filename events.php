@@ -1,5 +1,6 @@
 <?php 
-session_start();
+session_start();error_reporting(E_ALL);
+ini_set('display_errors', 1); 
 if(isset($_SESSION['Email'])){
     if(isset($_SESSION['EventID'])){
         unset($_SESSION['EventID']);
@@ -7,17 +8,25 @@ if(isset($_SESSION['Email'])){
 ?>
     <!DOCTYPE html>
     <style>
-       html{
-            background-color:rgb(88, 164, 176);
+       html,body{
+            overflow-x:hidden;
+           
+            margin:0;
+        }
+        .header_block{
+            margin: 0 -9999rem;
+            /* add back negative margin value */
+            padding: 0.25rem 9999rem;
+            background-color:RGBA(98, 129, 208,100%);
         }
         button{
             font-size:16pt;
             text-align:center;
             height:50px;
             width:250px;
-            background:#0c7c59;
-            border:outset black 1px;
-            color:white;
+            background:RGBA(191, 216, 200,50%);
+            border:solid #00916e 5px;
+            color:#00916e;
             border-radius:30px
         }
         td{
@@ -26,8 +35,18 @@ if(isset($_SESSION['Email'])){
             padding-left:12px;
             padding-right:12px;
         }
+        .editor{
+            font-size:16pt;
+            text-align:center;
+            height:50px;
+            width:250px;
+            background:RGBA(191, 216, 200,50%);
+            border:solid #00916e 5px;
+            color:#00916e;
+            border-radius:30px
+        }
         .gohome{
-            background:rgba(186, 193, 184,60%);
+            background:RGBA(98, 129, 208,50%);
             text-align:center;
             font-family:helvetica;
             font-size:14pt;
@@ -37,8 +56,8 @@ if(isset($_SESSION['Email'])){
             border-radius:30px;
             padding-top:10px;
             padding-bottom:10px;
-            border:10px solid #bac1b8;
-            color:white;
+            border:solid #274eb9 5px;
+            color:#00916e;
         }
         .form_block{
             text-align:center;
@@ -62,12 +81,14 @@ if(isset($_SESSION['Email'])){
     <title>Events</title>
     </head>
     <body>
-        <h1 style='font-family:helvetica;color:white;text-align:center;padding-bottom:20px'>This is the Events Page</h1>
+        <div class='header_block'>
+        <h1 style='font-family:helvetica;color:black;text-align:center'>Upcoming Events</h1>
+        </div>
         <?php
         include 'db_connection.php';
         $str = "SELECT  event_.EventID, event_.EventName FROM event_ JOIN  
          organization on organization.ID =  event_.HostID
-        JOIN  member AS user ON user.OrgID =  organization.ID WHERE user.Email = ?";
+        JOIN member AS user ON user.OrgID =  organization.ID WHERE user.Email = ?";
         $user_query = $conn->prepare($str);
         $user_query->bind_param("s", $_SESSION['Email']);
         $user_query->execute();
@@ -78,24 +99,22 @@ if(isset($_SESSION['Email'])){
             <?php
         }
         else{
-            ?><h3 style='text-align:center;color:black;font-family:helvetica'>Select an Event to view more details</h3><table class ='center'><?php
+            ?><table><h3 style='text-align:center;color:black;font-family:helvetica'>Select an Event to view more details</h3><table class ='center'><?php
             while($row = mysqli_fetch_assoc($result)){
                 ?>
-
             <div class='form_block'>
-                
                 <tr>
                 <td>
                     <form action="./event.php" id='event_submission' method='post'>
                         <input type="hidden" name="EventID" value='<?php echo $row['EventID']?>'/>
-                        <button type="submit" name="Submit" value='Submit'><?php echo $row['EventName']?></button>
+                        <button type="submit" name="Submit" value='Submit'><b><?php echo $row['EventName']?></b></button>
                     </form>
                 </td>
             <?php if(isset($_SESSION['Admin'])){?>
                 <td>
                     <form action="./edit_event.php" id='event_submission' method='post'>
                         <input type="hidden" name="EventID" value='<?php echo $row['EventID'];?>'/>
-                        <button type="submit" id='creator' name="Submit" value='Submit'>Edit this event</button>
+                        <button class='editor' type="submit" id='creator' name="Submit" value='Submit'>Edit this event</button>
                     </form>
                 </td>
             </div>
